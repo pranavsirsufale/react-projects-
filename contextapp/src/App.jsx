@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoProvider } from "./context";
 
 function App() {
@@ -24,6 +24,16 @@ const toggleComplete = (id) => {
     completed : !current.completed
   } : current))
 }
+
+
+
+useEffect(()=> { 
+const todos = JSON.parse(localStorage.getItem('todos'))
+
+if(todos && todos.length > 0 ){
+  setTodos(todos)
+} 
+},[])
 
 
   return (
