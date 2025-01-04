@@ -15,11 +15,15 @@ const updateTodo = (id , todo ) => {
   setTodos((prev) => prev.map((current)=>( current.id === id ? todo : current) )) 
 }
 
-
 const deleteTodo = (id) => {
   setTodos((prev) => prev.filter((current ) => current.id !== id))
 }
 
+const toggleComplete = (id) => {
+  setTodos((prev) => prev.map((current) => current.id === id ?  { ...current, 
+    completed : !current.completed
+  } : current))
+}
 
 
   return (
