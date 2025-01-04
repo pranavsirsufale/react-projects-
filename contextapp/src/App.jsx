@@ -16,7 +16,11 @@ const updateTodo = (id , todo ) => {
 }
 
 
-const 
+const deleteTodo = (id) => {
+  setTodos((prev) => prev.filter((current ) => current.id !== id))
+}
+
+
 
   return (
     <TodoProvider value={{todos,addTodo,updateTodo,deleteTodo}} >
