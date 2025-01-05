@@ -36,6 +36,12 @@ if(todos && todos.length > 0 ){
 } 
 },[])
 
+
+//! you can take more than one useEffects 
+useEffect(()=>{
+  localStorage.setItem('todos' , JSON.stringify(todos))
+},[todos])
+
   return (
     <TodoProvider value={{todos,addTodo,updateTodo,deleteTodo}} >
       <div className="bg-[#172842] min-h-screen py-8">
