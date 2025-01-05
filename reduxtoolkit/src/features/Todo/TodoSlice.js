@@ -22,7 +22,11 @@ const todoSlice = createSlice({
             ))
         },
         //! you have to do it later >>>>
-        updateTodo : (state,action) => {  }
+        updateTodo : (state,action) => {
+                state.todos = state.todos.map((todo)=>(
+                    action.payload.id == todo.id ? {...todo,text : action.payload.text} : todo ))
+
+          }
     }
 })
 
