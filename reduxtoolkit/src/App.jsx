@@ -9,7 +9,6 @@ function App() {
 
   return (
     <>
-      <h1> here is the app </h1>
       <AddTodo/>
 
       <div>
