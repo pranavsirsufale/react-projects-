@@ -6,16 +6,10 @@ const TodoItem = ({todo}) => {
     const [isTodoEditable,setIsTodoEditable] = useState(false)
 
     const [todoMsg,setTodoMsg ] = useState(todo.todo)
-
-  
-
     const editTodo = () => {
         updateTodo(todo.id,{...todo,todo:todoMsg})
         setIsTodoEditable(false)
     }
-
-
-   
 
     // let isTodoEditable = false
     if( !toggleComplete){
@@ -25,7 +19,6 @@ const TodoItem = ({todo}) => {
     const toggleCompleted = () => {
         toggleComplete(todo.id)
     }
-
 
   return (
     <div

@@ -57,11 +57,9 @@ useEffect(()=>{
             <ul>
               {
                  todos.map((currentTodo ) => (
-
                  <div key={currentTodo.id} 
                  className="w-full"
-                 >
-               
+                 >               
                   <TodoItem todo={currentTodo} />
                   </div>
                 )) 
