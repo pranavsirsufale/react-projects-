@@ -37,14 +37,10 @@ if(todos && todos.length > 0 ){
 } 
 },[])
 
-
 //! you can take more than one useEffects 
 useEffect(()=>{
   localStorage.setItem('todos' , JSON.stringify(todos))
 },[todos])
-
-
-console.log(todos)
 
   return (
     <TodoProvider value={{todos,addTodo,updateTodo,deleteTodo,toggleComplete}} >
@@ -60,10 +56,15 @@ console.log(todos)
           <div className="flex flex-wrap gap-y-3">
             <ul>
               {
-                todos ? todos.map((currentTodo ) => (
-                  
-                  <TodoItem key={currentTodo.id} todo={currentTodo} />
-                )) : ''
+                 todos.map((currentTodo ) => (
+
+                 <div key={currentTodo.id} 
+                 className="w-full"
+                 >
+               
+                  <TodoItem todo={currentTodo} />
+                  </div>
+                )) 
               }
             </ul>
           </div>
