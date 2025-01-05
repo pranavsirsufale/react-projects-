@@ -43,6 +43,9 @@ useEffect(()=>{
   localStorage.setItem('todos' , JSON.stringify(todos))
 },[todos])
 
+
+console.log(todos)
+
   return (
     <TodoProvider value={{todos,addTodo,updateTodo,deleteTodo,toggleComplete}} >
       <div className="bg-[#172842] min-h-screen py-8">
@@ -57,10 +60,10 @@ useEffect(()=>{
           <div className="flex flex-wrap gap-y-3">
             <ul>
               {
-                todos.map((todo) => (
+                todos ? todos.map((currentTodo ) => (
                   
-                  <TodoItem key={todo.id} todo={todo} />
-                ))
+                  <TodoItem key={currentTodo.id} todo={currentTodo} />
+                )) : ''
               }
             </ul>
           </div>
