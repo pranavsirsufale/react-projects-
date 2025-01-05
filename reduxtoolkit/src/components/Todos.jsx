@@ -6,11 +6,9 @@ const Todos = () => {
 const dispatch = useDispatch()
 const todos = useSelector(state => state.todos)
 
-
 console.log(todos)
 
-
-  return (
+return (
     <>
     <div>Todos</div>
     <ul className="list-none">
