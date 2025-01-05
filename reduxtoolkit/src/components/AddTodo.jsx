@@ -6,9 +6,11 @@ import Todos from "./Todos";
 const AddTodo = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  const [isUpdate, setIsUpDated] = useState(true);
+  const [isUpdate, setIsUpDated] = useState(false);
 
   const [toUpdate, setToUpdate] = useState("");
+  const [ toUpdateId , setToUpdateId] = useState('')
+  // const [ updateItems , setUpdateItems] = useState({})
 
   const addTodoHandler = (e) => {
     e.preventDefault();
@@ -16,23 +18,32 @@ const AddTodo = () => {
     setInput("");
   };
 
-  const updateHandler = (e,id,text) => {
+  const updateHandler = (id , text) => {
+    setIsUpDated(true)
+    setToUpdate(text)
+    setToUpdateId(id)
+  }
+
+  const submitUpdate = (e) => {
     e.preventDefault()
-    dispatch(updateTodo(id,text))
+    const id = toUpdateId
+    const text = toUpdate
+    dispatch(updateTodo({id,text}))
     setToUpdate('')
-    setIsUpDated((prev)=> !prev)
+    setToUpdateId('')
+    setIsUpDated(false)
 
   }
 
   return (
     <>
-      <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
+      <form onSubmit={ isUpdate ? submitUpdate :addTodoHandler} className="space-x-3 mt-12">
         { isUpdate ? (
           <input
             type="text"
             className="bg-yellow-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             placeholder="Update the Todo..."
-            value={input}
+            value={toUpdate}
             onChange={(e) => setToUpdate(e.target.value)}
           />
         ) : (
@@ -67,7 +78,7 @@ const AddTodo = () => {
       </form>
 
       <div>
-        <Todos />
+        <Todos updateHandler={updateHandler} />
       </div>
     </>
   );
