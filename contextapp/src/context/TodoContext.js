@@ -16,13 +16,10 @@ export const TodoContext = createContext({
     toggleComplete : (id) => {}
 
 })
-
 export const useTodo = () => {
     //? Step 2 : use the context
     return useContext(TodoContext)
 }
-
-
 
 //? step 3 : context Provider  
 export const TodoProvider = TodoContext.Provider 
