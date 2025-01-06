@@ -6,17 +6,3 @@ class Member(models.Model):
     lastName = models.CharField(max_length=255)
     phone = models.IntegerField()
     joined_date = models.DateField()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
