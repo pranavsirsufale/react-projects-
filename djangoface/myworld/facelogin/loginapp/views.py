@@ -12,17 +12,3 @@ def home(request):
 
 def members(requrest):
     return HttpResponse('hello world')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
