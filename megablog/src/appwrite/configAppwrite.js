@@ -21,11 +21,49 @@ export class Service{
 
     async createPost({title,slug,content,featuredImage,status,userId}){
         try {
-            return await this.databases.createDocument(appwrite_db_id,appwrite_collection_id, ID.unique())
+            return await this.databases.createDocument(appwrite_db_id,appwrite_collection_id,slug,{
+                title,
+                content,
+                featuredImage,
+                status,
+                userId
+            })
         } catch (error) {
             throw error
         }
     }
+
+
+    async updatePost(slug,{title,content,featuredImage,status}){
+        try {
+            return await this.databases.updateDocument(appwrite_db_id,appwrite_collection_id,slug,
+                {
+                    title,
+                    content,
+                    featuredImage,
+                    status
+                }
+            )
+        } catch (error) {
+            throw error
+        }
+    }
+
+
+
+    
+    async deleteDocument(slug){
+        try {
+            return await this.databases.deleteDocument(appwrite_db_id,appwrite_collection_id,slug)
+        } catch (error) {
+            throw error
+        }
+    }
+
+
+
+
+
 }
 
 const service = new Service()
