@@ -100,7 +100,6 @@ export class Service {
   }
 
   //! file upload service
-
   async uploadFile(file) {
     try {
       return await this.storage.createFile(appwrite_bucket_id, ID.unique, file);
@@ -108,6 +107,22 @@ export class Service {
       throw error;
     }
   }
+
+  async deleteFile(fileId){
+    try {
+        await this.storage.deleteFile(appwrite_bucket_id,fileId)
+        return true
+    } catch (error) {
+        throw error
+    }
+  }
+
+  getFilePreview(fileId){
+    this.databases.getFilePreview(
+        appwrite_bucket_id,fileId
+    )
+  }
+
 }
 
 const service = new Service();
