@@ -33,7 +33,6 @@ export class Service{
         }
     }
 
-
     async updatePost(slug,{title,content,featuredImage,status}){
         try {
             return await this.databases.updateDocument(appwrite_db_id,appwrite_collection_id,slug,
@@ -49,18 +48,25 @@ export class Service{
         }
     }
 
-
-
-    
-    async deleteDocument(slug){
+    async deletePost(slug){
         try {
-            return await this.databases.deleteDocument(appwrite_db_id,appwrite_collection_id,slug)
+            await this.databases.deleteDocument(appwrite_db_id,appwrite_collection_id,slug)
+            return true
+        } catch (error) {
+            throw error
+        }
+
+    }
+
+
+
+    async getPost(slug){
+        try {
+            return await this.databases.getDocument(appwrite_db_id,appwrite_collection_id,slug)
         } catch (error) {
             throw error
         }
     }
-
-
 
 
 
