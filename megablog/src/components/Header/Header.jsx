@@ -76,6 +76,14 @@ const Header = () => {
 
         </div>
 
+            {
+              authStatus && (
+                <li>
+                  <LogoutBtn/>
+                </li>
+              )
+             
+            }
 
       </nav>
 
