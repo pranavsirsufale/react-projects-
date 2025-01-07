@@ -5,13 +5,13 @@ from .models import Member
 
 # Create your views here.
 def home(request):
-    homepage = loader.get_template('register.html')
+    htmlTemplate = loader.get_template('all_memeber.html')
     members = Member.objects.all().values()
-    constext = {
+    context = {
         'mymembers':members,
     }
     return HttpResponse(
-        homepage.render(constext,request)
+        htmlTemplate.render(context,request)
     )
 
 

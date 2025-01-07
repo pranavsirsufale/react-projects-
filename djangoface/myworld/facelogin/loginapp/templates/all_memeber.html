@@ -8,7 +8,31 @@
 <body>
     <h1>    Members </h1>
 
-    <ul>
+
+    <table>
+        <tr>
+            <th>
+                who 
+            </th>
+            <th>
+                whome
+            </th>
+        </tr>
+        {% for x in mymembers %}
+        <tr>
+            <td>
+                    {{ x.firstName }}
+            </td>
+            <td>
+                {{ x.lastName }}
+            </td>
+        </tr>
+        {% endfor %}
+        
+
+    </table>
+
+    <!-- <ul>
         {% for x in mymembers %}
 
         <li>
@@ -17,7 +41,7 @@
         </li>
 
         {% endfor %}
-    </ul>
+    </ul> -->
 
 </body>
 </html>
