@@ -15,5 +15,15 @@ def home(request):
     )
 
 
+def details(request,id):
+    htmlTemplate = loader.get_template('details.html')
+    member = Member.objects.get(id=id)
+    context = {
+        'mymember':member
+    }
+    return HttpResponse(
+        htmlTemplate.render(context,request)
+    )
+
 def members(requrest):
     return HttpResponse('hello world')

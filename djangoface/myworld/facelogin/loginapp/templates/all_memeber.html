@@ -20,28 +20,22 @@
         </tr>
         {% for x in mymembers %}
         <tr>
-            <td>
-                    {{ x.firstName }}
+            <td  >
+                <li>
+                    <a href="members/details/{{x.id}}" >
+                        {{ x.firstName }}
+                    </a>
+
+                    </li>
+                    
+                
             </td>
             <td>
                 {{ x.lastName }}
             </td>
         </tr>
         {% endfor %}
-        
-
     </table>
-
-    <!-- <ul>
-        {% for x in mymembers %}
-
-        <li>
-            {{ x.firstName }}
-            {{ x.lastName}}
-        </li>
-
-        {% endfor %}
-    </ul> -->
 
 </body>
 </html>
