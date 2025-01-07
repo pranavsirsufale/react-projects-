@@ -58,8 +58,6 @@ export class Service{
 
     }
 
-
-
     async getPost(slug){
         try {
             return await this.databases.getDocument(appwrite_db_id,appwrite_collection_id,slug)
@@ -68,6 +66,15 @@ export class Service{
         }
     }
 
+    async getPosts(){
+        try {
+            return await this.databases.listDocuments(appwrite_db_id,appwrite_collection_id,Query({
+                
+            }))
+        } catch (error) {
+            throw error
+        }
+    }
 
 
 }
