@@ -1,0 +1,7 @@
+const tiny_api_key = import.meta.env.VITE_TINY_API_KEY
+const appwrite_project_id= import.meta.env.VITE_APPWRITE_PROJECT_ID
+const appwrite_api_endpoint=import.meta.env.VITE_APPWRITE_API_ENDPOINT
+const appwrite_db_id= import.meta.env.VITE_APPWRITE_DB_ID
+const appwrite_collection_id= import.meta.env.VITE_APPWIRTE_COLLECTION_ID
+const appwrite_bucket_id= import.meta.env.VITE_APPWIRTE_BUCKET_ID
+export { tiny_api_key,appwrite_project_id,appwrite_api_endpoint,appwrite_db_id,appwrite_collection_id,appwrite_bucket_id}
