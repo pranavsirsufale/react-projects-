@@ -1,24 +1,39 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-
+import { useDispatch } from 'react-redux'
+import authService from './appwrite/auth'
+import { login ,logout } from './store/slice/authSlice'
 
 export default function App() {
-  // const editorRef = useRef(null);
-  // const log = () => {
-  //   if (editorRef.current) {
-  //     console.log(editorRef.current.getContent());
-  //   }
+  const dispatch = useDispatch()
 
-  const apiKey = import.meta.env.VITE_TINY_API_KEY 
-  console.log(apiKey)
+  const [loading,setLoading] = useState(true)
 
-  // };
+  useEffect(()=>{
+    authService.getCurrentUser()
+    .then((userData)=>{
+      if(userData){
+        dispatch(login({userData}))
+      } else {
+        dispatch(logout())
+      }
+
+
+
+    })
+    .finally(()=>{
+      setLoading(false)
+    })
+  },[])
+
+
+
   return (
     <>
-
     <h1>
       hello guys there are so many of us 
     </h1>
- </>
+   
+   </>
   );
 }
