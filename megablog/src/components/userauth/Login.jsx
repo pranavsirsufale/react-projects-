@@ -37,6 +37,25 @@ const Login = () => {
             <Logo width="100%" />
           </span>
         </div>
+        <h2 className="text-center text-2xl font-bold" >
+            Sign in to your account
+        </h2>
+
+        <p className="mt-2 text-center text-base text-black/60" >
+
+            Don't have any account ? 
+            <Link 
+            to='/signup'
+            className="font-medium text-primary transition-all duration-200 hover:underline"
+            >
+            Sign Up
+            </Link>
+
+
+        </p>
+
+
+
       </div>
     </div>
   );
