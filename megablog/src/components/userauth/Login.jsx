@@ -54,6 +54,32 @@ const Login = () => {
 
         </p>
 
+        {
+            error && 
+            <p className="text-red-500 mt-8 text-center" >
+                { error }
+            </p>
+
+            
+
+        }
+
+       
+       
+        <form onSubmit={handleSubmit(login)}
+        className="mt-8"
+        >
+            <div className="space-y-5" > 
+                <Input
+                    label='Email:'
+                    placeholder='Enter your email'
+                    type='email'
+                    {...register}
+                />
+            </div>
+
+        </form>
+
 
 
       </div>
