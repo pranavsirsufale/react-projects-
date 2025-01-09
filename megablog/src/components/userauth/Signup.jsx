@@ -57,28 +57,37 @@ const Signup = () => {
         </p>
 
         {error && <p className="text-red-600 mt-8">{error}</p>}
- 
 
-        <form onSubmit={handleSubmit(signUp())} >
-            <div onSubmit='space-y-5' >
+        <form onSubmit={handleSubmit(signUp())}>
+          <div onSubmit="space-y-5">
+            <Input
+              label="Full Name: "
+              placeholder="Enter Your Name"
+              {...register("name", {
+                required: true,
+              })}
+            />
 
-                    <Input
-                    label='Full Name: '
-                    placeholder='Enter Your Name'
-                    {...register('name',{
-                        required : true,
-                        
-                    } )}
-                    
-                    />
+            <Input
+              label="Email"
+              placeholder="Enter your email"
+              {...register("email", {
+                required: true,
+                matchPattern: (value) =>
+                  /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}/.test(value) ||
+                  "email added must be there ",
+              })}
+            />
 
-            </div>
-
-            
+            <Input
+              label="Password : "
+              placeholder="Enter your password"
+              {...register("password", {
+                required: true,
+              })}
+            />
+          </div>
         </form>
-
-
-
       </div>
     </div>
   );
