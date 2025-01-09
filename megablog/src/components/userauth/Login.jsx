@@ -7,13 +7,13 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const Login = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
 
   const login = async (data) => {
+    console.log(data)
     setError("");
     try {
       const session = await authService.login(data);
@@ -87,10 +87,5 @@ const Login = () => {
       </div>
     </div>
   );
-
-
-
-
-
 };
 export default Login;

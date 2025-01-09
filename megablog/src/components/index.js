@@ -8,6 +8,7 @@ import Select from "./select/Select";
 import PostCard from "./card/PostCard";
 import Login from "./userauth/Login";
 import Register from "./userauth/Register";
+import Signup from "./userauth/Signup";
 
 // import Container from './container/Container'
-export { Header,Footer ,Logo ,LogoutBtn ,Button,Input,Select,PostCard,Login,Register }
+export { Header,Footer ,Logo ,LogoutBtn ,Button,Input,Select,PostCard,Login,Register , Signup }
