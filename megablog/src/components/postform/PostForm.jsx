@@ -20,6 +20,12 @@ const PostForm = ({post}) => {
     const navigate = useNavigate()
     const userData = useSelector(state => state.auth.userData)
 
+    const submit = async (data) => {
+        if(post){
+            data.image[0] ? appWriteService.uploadFile(data.image[0]) :null
+        }
+    }
+
 
 
 
