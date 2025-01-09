@@ -1,26 +1,34 @@
 import { Link } from "react-router-dom";
-import service from "../../appwrite/configAppwrite";
+import appWriteService from "../../appwrite/configAppwrite";
 
-const PostCard = ({ 
+const PostCard = (
+  {
     $id,
     title,
     featuredImage
-   }) => {
-  return (
-    <Link to={`/post/${$id}`}>
-      <div  className="w-full bg-gray-100 rounded-xl p-4" >
+  }
+) => {
 
-      <div className="w-full justify-center mb-4">
-        <img src={`${service.getFilePreview(featuredImage)}`} alt={title} 
-        className="rounded-xl"
-        />
+return(
+  <Link to={`/post/${$id}`} >
+    <div className="w-full bg-gray-100 rounded-xl p-4" >
+
+      <div className="w-full justify-center mb-4" >
+
+        <img src={appWriteService.getFilePreview(featuredImage)} alt={title}  className="rounded-xl" />
+
+    <h2 className="text-xl font-bold" >
+
+      {title}
+    </h2>
+        
       </div>
-        <h2
-        className="text-xl"
-        >{title}</h2>
-      </div>
-    </Link>
-  );
-};
+
+    </div>
+  
+  </Link>
+)
+
+}
 
 export default PostCard;
