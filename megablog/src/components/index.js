@@ -9,6 +9,7 @@ import PostCard from "./card/PostCard";
 import Login from "./userauth/Login";
 import Register from "./userauth/Register";
 import Signup from "./userauth/Signup";
+import Protected from "./Header/AuthLayout";
 
 // import Container from './container/Container'
-export { Header,Footer ,Logo ,LogoutBtn ,Button,Input,Select,PostCard,Login,Register , Signup }
+export { Header,Footer ,Logo ,LogoutBtn, Protected ,Button,Input,Select,PostCard,Login,Register , Signup }
