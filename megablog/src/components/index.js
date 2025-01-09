@@ -10,6 +10,8 @@ import Login from "./userauth/Login";
 import Register from "./userauth/Register";
 import Signup from "./userauth/Signup";
 import Protected from "./Header/AuthLayout";
+import RTE from "./rte/RTE";
+import PostForm from "./postform/PostForm";
 
 // import Container from './container/Container'
-export { Header,Footer ,Logo ,LogoutBtn, Protected ,Button,Input,Select,PostCard,Login,Register , Signup }
+export { PostForm,RTE,Header,Footer ,Logo ,LogoutBtn, Protected ,Button,Input,Select,PostCard,Login,Register , Signup }
