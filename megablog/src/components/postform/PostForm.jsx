@@ -104,7 +104,29 @@ const PostForm = ({ post }) => {
 
 
                 <Input
+                        label='slug :'
+                        placeholder='slug'
+                        className='mb-4'
+                        {
+                            ...register('slug',{
+                                required: true
+                            })
+                        } 
+                        onInput={(e)=>{
+                            setValue('slug',slugTransform(e.target.value),{
+                                shouldValidate : true
+                            })
+                        }}
+                        
+                        
+                />
 
+
+                <RTE 
+                    label='Content :'
+                    name='content'
+                    control={control}
+                    defaultValue={getValues('content')}
                 />
 
                 </div>
@@ -126,8 +148,43 @@ const PostForm = ({ post }) => {
                         />
 
                         {
-                            post && ()
+                            post && (
+                                <div>
+                                    <img src={appWriteService.getFilePreview(post.featuredImage)} alt={post.title}
+                                    className='rounded-lg' 
+                                    
+                                    />
+                                </div>
+                            )
                         }
+
+
+                        <Select
+                        options={['active','inactive']}
+                        label='Status'
+                        className='mb-4'
+                        {...register('status',{
+                            required:true
+                        })}
+
+                        />
+
+                        <Button
+                        type="submit"
+                        bgColor={post ? 'bg-green-500' : undefined}
+                        className='w-full'
+
+
+                            >
+                                {
+                                    post ? 'Update' : 'submit'
+                                }
+                                </Button> 
+
+
+
+
+
 
             </div>
 
