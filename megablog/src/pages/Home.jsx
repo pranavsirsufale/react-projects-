@@ -5,7 +5,6 @@ import appWriteService from "../appwrite/configAppwrite";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-
   useEffect(() => {
     appWriteService.getPosts().then((posts) => {
       if (posts) {
@@ -13,7 +12,6 @@ const Home = () => {
       }
     });
   });
-
   if (posts.length === 0) {
     return (
       <div className="w-full py-8 mt-4 text-center">
@@ -29,7 +27,6 @@ const Home = () => {
       </div>
     );
   }
-
   return (
     <div className="w-full py-8">
       <Container>
@@ -44,5 +41,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
