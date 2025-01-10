@@ -35,7 +35,12 @@ export default function App() {
       <div className="w-full block">
         <Header />
         <main>
-          //! todo outlet
+      
+
+
+
+
+      
           <Outlet />
         </main>
         <Footer />

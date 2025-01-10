@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import authService from "../../appwrite/auth";
-import { Input, Login, Logo } from "../index";
+import { Button, Input, Login, Logo } from "../index";
 import { login as loginStore } from "../../store/slice/authSlice";
 import { useDispatch } from "react-redux";
-import { set, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const Signup = () => {
 
         {error && <p className="text-red-600 mt-8">{error}</p>}
 
-        <form onSubmit={handleSubmit(signUp())}>
+        <form onSubmit={handleSubmit(signUp)}>
           <div onSubmit="space-y-5">
             <Input
               label="Full Name: "
@@ -86,6 +87,11 @@ const Signup = () => {
                 required: true,
               })}
             />
+
+            <Button type="submit" className="w-full my-5">
+              {" "}
+              Sign Up{" "}
+            </Button>
           </div>
         </form>
       </div>
