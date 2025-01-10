@@ -153,5 +153,4 @@ const PostForm = ({ post }) => {
     </form>
   );
 };
-
 export default PostForm;
