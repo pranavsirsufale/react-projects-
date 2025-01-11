@@ -102,7 +102,7 @@ export class Service {
   //! file upload service
   async uploadFile(file) {
     try {
-      return await this.storage.createFile(appwrite_bucket_id, ID.unique, file);
+      return await this.storage.createFile(appwrite_bucket_id, ID.unique(), file);
     } catch (error) {
       throw error;
     }
@@ -118,7 +118,7 @@ export class Service {
   }
 
   getFilePreview(fileId){
-    this.databases.getFilePreview(
+    this.storage.getFilePreview(
         appwrite_bucket_id,fileId
     )
   }

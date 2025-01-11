@@ -1,7 +1,12 @@
-import React, { useState} from 'react'
-import { useNavigate , useParams} from 'react-router-dom'
+import React, { useEffect, useState} from 'react'
+import { useNavigate , useParams , Link} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import appwriteService from '../appwrite/configAppwrite'
+import parse from 'html-react-parser'
+import Container from '../components/container/Container'
+import { Button } from '../components'
+
+
 
 
 const Post = () => {
