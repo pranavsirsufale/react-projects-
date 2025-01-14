@@ -118,9 +118,11 @@ export class Service {
   }
 
   getFilePreview(fileId){
-    this.storage.getFilePreview(
+    const file = this.storage.getFilePreview(
         appwrite_bucket_id,fileId
     )
+    // console.log(file)
+    return file
   }
 
 }
