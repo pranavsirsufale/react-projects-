@@ -7,12 +7,13 @@ const RTE = ({ name, control, label, defaultValue = "" }) => {
   const editorRef = useRef(null);
   const log = () => {
     if (editorRef.current) {
+      editorRef.current.getContent()
       console.log(editorRef.current.getContent());
     }
   };
 
 
-  console.log(tiny_api_key)
+
 
   return (
 
@@ -20,6 +21,11 @@ const RTE = ({ name, control, label, defaultValue = "" }) => {
     <div className="w-full">
       {label && (
         <label className="inline-block mb-1 pl-1">
+          { label }   </label>
+      )}
+
+
+
           <Controller
             name={name || "content"}
             control={control}
@@ -31,12 +37,13 @@ const RTE = ({ name, control, label, defaultValue = "" }) => {
                 // licenseKey={tiny_api_key}
                 apiKey={tiny_api_key}
                 onInit={(_evt, editor) => (editorRef.current = editor)}
-                initialValue="default value"
+                initialValue={defaultValue}
                 init={{
                   branding: false,
                   height: 500,
                   menu: true,
                   menubar: true,
+                  initialValue : defaultValue,
                   plugins: [
                     "advlist",
                     "autolink",
@@ -99,8 +106,7 @@ const RTE = ({ name, control, label, defaultValue = "" }) => {
 
             )}
           />
-        </label>
-      )}
+      
     </div>
   );
 };

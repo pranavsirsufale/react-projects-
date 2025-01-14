@@ -14,6 +14,8 @@ const AllPost = () => {
     });
   }, []);
 
+  console.log(posts)
+
 
 
   return (
