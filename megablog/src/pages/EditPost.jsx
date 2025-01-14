@@ -22,6 +22,8 @@ const EditPost = () => {
     }
   }, [slug, navigate]);
 
+  console.log(post)
+
   return post ? (
     <div className="py-8">
       <Container>
