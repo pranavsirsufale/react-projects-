@@ -13,19 +13,27 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const login = async (data) => {
-    console.log(data)
     setError("");
+    const userData = "";
     try {
       const session = await authService.login(data);
       if (session) {
-        const userData = await authService.getCurrentUser();
+        userData = await authService.getCurrentUser();
+        if (data) {
+          dispatch(authLogin(userData));
+          navigate("/");
+        }
         if (userData) {
-          dispatch(authLogin);
+          dispatch(authLogin(userData));
           navigate("/");
         }
       }
     } catch (error) {
       setError(error.message);
+      console.log(userData);
+      if (userData) {
+        dispatch(authLogin(userData));
+      }
     }
   };
   return (
