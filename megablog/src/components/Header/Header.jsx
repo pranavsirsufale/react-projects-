@@ -10,12 +10,7 @@ const Header = () => {
   
   const [ authStatus , setAuthStatus] = useState(status)
 
-  // useEffect(()=>{
-    
-  // },[authStatus])
-
-
-  const navItems = [
+  const [navItems, setNavItems ] = useState([
     {
       name: "Home",
       slug: "/",
@@ -41,7 +36,71 @@ const Header = () => {
       slug: "/add-post",
       active: authStatus,
     },
-  ];
+  ])
+
+  // useEffect(()=>{
+    
+  // },[authStatus])
+
+
+
+
+ useEffect(()=>{
+  // const navItems = [
+  //   {
+  //     name: "Home",
+  //     slug: "/",
+  //     active: true,
+  //   },
+  //   {
+  //     name: "Login",
+  //     slug: "/login",
+  //     active: !authStatus,
+  //   },
+  //   {
+  //     name: "Signup",
+  //     slug: "/signup",
+  //     active: !authStatus,
+  //   },
+  //   {
+  //     name: "All Posts",
+  //     slug: "/all-posts",
+  //     active: authStatus,
+  //   },
+  //   {
+  //     name: "Add Post",
+  //     slug: "/add-post",
+  //     active: authStatus,
+  //   },
+  // ];
+  setNavItems([
+    {
+      name: "Home",
+      slug: "/",
+      active: true,
+    },
+    {
+      name: "Login",
+      slug: "/login",
+      active: !authStatus,
+    },
+    {
+      name: "Signup",
+      slug: "/signup",
+      active: !authStatus,
+    },
+    {
+      name: "All Posts",
+      slug: "/all-posts",
+      active: authStatus,
+    },
+    {
+      name: "Add Post",
+      slug: "/add-post",
+      active: authStatus,
+    },
+  ])
+},[authStatus,navigate,navItems])
 
   return (
     <header className="py-3 shadow bg-gray-500">
