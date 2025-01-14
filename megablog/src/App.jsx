@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Editor } from "@tinymce/tinymce-react";
 import { useDispatch, useSelector } from "react-redux";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/slice/authSlice";
@@ -12,8 +11,6 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   const { status, userData } = useSelector((state) => state.auth);
-  console.log(status);
-  console.log(userData);
 
   useEffect(() => {
     authService
@@ -35,12 +32,6 @@ export default function App() {
       <div className="w-full block">
         <Header />
         <main>
-      
-
-
-
-
-      
           <Outlet />
         </main>
         <Footer />
