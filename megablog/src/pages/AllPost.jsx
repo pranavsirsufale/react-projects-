@@ -2,19 +2,37 @@ import React, { useEffect, useState } from "react";
 import appWriteService from "../appwrite/configAppwrite";
 import Container from "../components/container/Container";
 import { PostCard } from "../components";
+import { addPosts } from '../store/slice/postSlice'
+import { useDispatch , useSelector} from "react-redux";
+
+
+
+
 
 const AllPost = () => {
-  const [posts, setPosts] = useState([]);
+  let post = useSelector((state) => state.post.post)
+  const [posts, setPosts] = useState(post || []);
+  
+  const dispatch = useDispatch()
 
+  
+  
+  
   useEffect(() => {
-    appWriteService.getPosts([]).then((posts) => {
-      if (posts) {
-        setPosts(posts.documents);
+    
+    if(post.length === 0){
+      appWriteService.getPosts([]).then((posts) => {
+   
+        if (posts) {
+          setPosts(posts.documents);
+          dispatch(addPosts(posts.documents))
+ 
       }
     });
+  }
+    
   }, []);
 
-  console.log(posts)
 
 
 

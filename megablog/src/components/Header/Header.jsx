@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.status);
 
-  console.log(authStatus)
+
 
   const navItems = [
     { name: "Home", slug: "/", active: true },

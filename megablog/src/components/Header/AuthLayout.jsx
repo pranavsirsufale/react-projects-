@@ -10,11 +10,11 @@ export default function Protected({ children, authentication = true }) {
 
   const route = useLocation()
 
-console.log(authStatus)
+
 
   
 
-  console.log(authStatus)
+
   useEffect(() => {
     //
     if (authentication && authStatus !== authentication) {

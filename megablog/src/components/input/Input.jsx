@@ -1,12 +1,10 @@
-import { forwardRef , useId } from 'react'
+import { forwardRef, useId } from "react";
 
-const Input = ({
-  label ,
-  type='input',
-  ...props
-}) => {
-  const id = useId()
-
+const Input = (
+  { label = "", type = "text", className = "", ...props },
+  ref
+) => {
+  const id = useId();
   return (
     <div className="w-full">
       {label && (
@@ -23,7 +21,7 @@ const Input = ({
         id={id}
       />
     </div>
-  )
-}
+  );
+};
 
-export default forwardRef(Input)
+export default forwardRef(Input);

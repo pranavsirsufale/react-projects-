@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../../store/slice/authSlice";
 import { Button, Input, Logo } from "../index";
 import authService from "../../appwrite/auth";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
@@ -14,26 +14,23 @@ const Login = () => {
 
   const login = async (data) => {
     setError("");
-    const userData = "";
+    let userData = "";
     try {
       const session = await authService.login(data);
+      console.log(session)
+
+
       if (session) {
         userData = await authService.getCurrentUser();
-        if (data) {
-          dispatch(authLogin(userData));
-          navigate("/");
-        }
         if (userData) {
+          console.log(userData)
           dispatch(authLogin(userData));
           navigate("/");
         }
+        
       }
     } catch (error) {
       setError(error.message);
-      console.log(userData);
-      if (userData) {
-        dispatch(authLogin(userData));
-      }
     }
   };
   return (
