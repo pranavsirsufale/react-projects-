@@ -1,46 +1,26 @@
-import { useState } from "react"
-import Buttons from "./components/Buttons"
-
+import { useState } from "react";
+import Buttons from "./components/Buttons";
 
 function App() {
-
-  const [currentColor , setCurrentColor] = useState('blue')
+  const [currentColor, setCurrentColor] = useState("gray");
 
   const setCurrentColors = (color) => {
-    setCurrentColor(color)
-  }
-
-  
+    setCurrentColor(color);
+  };
 
   return (
-    <div className={`flex flex-col justify-center align-center w-full min-h-full bg-${currentColor}-200`} >
-
-      <div
-        className="w-full bg-green-400 p-6"
-      
-      >
+    <div
+      className='w-full h-screen duration-200'
+      style={{ backgroundColor: currentColor }}
+    >
 
 
-
-      <h1  
-      >
-
-
-
-        hii there it's pranav
-      </h1>
-        </div>
-
-        <div
-        className="flex justify-center align-bottom h-full"
-        >
-
-      <Buttons fun={setCurrentColors} />
-
-        </div>
+      <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 ">
+        <Buttons fun={setCurrentColors} />
+      </div>
 
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

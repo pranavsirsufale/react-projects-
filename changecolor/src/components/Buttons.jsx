@@ -1,40 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-const Buttons = ({fun}) => {
-    
-
-    const [colors, setColors ] = useState([
-        'white',
-        'green',
-        'red',
-        'yellow',
-        'black',
-        'pink'
-    ])
-
+const Buttons = ({ fun }) => {
+  const [colors, setColors] = useState([
+    "blue",
+    "green",
+    "red",
+    "yellow",
+    "black",
+    "pink",
+    "olive",
+  ]);
 
   return (
     <div>
-        <p 
-        className='p-5 m-10'
-        >
-        {
-            colors.map((color)=>(
-                <button key={color}
-
-                className={`px-2 mx-2 `}
-
-                onClick={()=> fun(color)}
-                >
-                    {
-                        color
-                    }
-                </button>
-            ))
-        }
-        </p>
+      <p className="p-2 m-10 bg-slate-300 rounded-md">
+        {colors.map((color) => (
+          <button
+            key={color}
+            className={`p-2 mx-3 rounded-md text-xl`}
+            style={{ backgroundColor: color }}
+            onClick={() => fun(color)}
+          >
+            {color}
+          </button>
+        ))}
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default Buttons
+export default Buttons;
