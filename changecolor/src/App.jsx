@@ -4,9 +4,6 @@ import Buttons from "./components/Buttons";
 function App() {
   const [currentColor, setCurrentColor] = useState("gray");
 
-  const setCurrentColors = (color) => {
-    setCurrentColor(color);
-  };
 
   return (
     <div
@@ -14,9 +11,8 @@ function App() {
       style={{ backgroundColor: currentColor }}
     >
 
-
       <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 ">
-        <Buttons fun={setCurrentColors} />
+        <Buttons fun={setCurrentColor} />
       </div>
 
     </div>
