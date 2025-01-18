@@ -1,33 +1,92 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useCallback, useEffect, useState } from "react"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [len, setLen] = useState(8)
+
+  let smtext = 'abcdefghijklmnopqrstuvwxyz'
+  smtext += 'abcdefghijklmnopqrstuvwxyz'.toUpperCase()
+  smtext += '~!@#~`$%^&*^()-_' // 68
+  smtext += '0123456789' // 78
+  const max = smtext.length-1 ; // 78 - 0 + 
+
+  // console.log(Math.round((Math.random())* (max)) ) 
+
+  console.log(len)
+
+
+const [password , setPassword ] = useState('')
+
+ 
+
+ 
+
+  const copyCode = (e) => {
+    navigator.clipboard.writeText(e.target.value);
+    
+    console.log(e)
+
+    e.target.select()
+    
+    alert(`The Code is Copied : ${e.target.value}`)
+    
+  }
+
+  // const passwordGenerator = () => {
+    
+  // }
+
+  const passwordGenerator = useCallback(()=>{
+    let curr = ''
+    for(let i = 0 ; i < len ; i++){
+      curr += smtext[Math.round((Math.random())* (max))]
+    }
+
+    setPassword(curr)
+
+  },[len,password])
+
+
+
+
+  useEffect(()=>{
+      passwordGenerator()
+   
+  
+  },[len])
+
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+    <div className="container">
+
+    <div>
+
+    <input name="len" id="len" type="range" max={16} min={7}  value={len} onChange={(e)=>setLen(e.target.value)}
+    
+    />
+      <input type="text" readOnly value={password} 
+
+      onClick={(e)=>copyCode(e)}
+      
+      style={{textAlign:"center", fontSize : '1.3rem', backgroundColor: '#124',  border:"2px solid green" , borderRadius: '20px'}}
+      />
+    </div>
+
+    <div>
+    <label htmlFor="len"> {len} </label>
+
+    </div>
+
+    </div>
+
+
+
+    <h1>
+      Hii there's Pranav Sirsufale 
+    </h1>
     </>
   )
 }
