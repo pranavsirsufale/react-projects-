@@ -49,16 +49,28 @@ function App() {
       <div className=""
       style={{
         height : '500px',
-        width : '300px',
-        margin: '180px auto',
-        
+        width : '100vw',
+        display : 'flex',
+        justifyContent : "center",
+        alignItems: 'center',
+
+     
+
 
       }}
       >
-        <div>
+        <div
+        >
 
           {/*  first div  */}
-          <div className="">
+          <div 
+        
+           style={{
+              textAlign :"center",
+              marginTop : '2rem'
+      
+            }}
+          className="">
             <h1>Password generator</h1>
 
             <input
@@ -92,7 +104,14 @@ function App() {
 
 
               {/*  second div  */}
-          <div>
+          <div
+            style={{
+              textAlign :"center",
+              marginTop : '2rem'
+      
+            }}
+          
+          >
             <div>
               <input
                 name="len"
