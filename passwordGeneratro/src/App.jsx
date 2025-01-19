@@ -3,11 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 function App() {
   const [len, setLen] = useState(8);
   const [password, setPassword] = useState("");
-  const [isNumAllowed, setIsNumAllowed] = useState(false)
-  const [isChar ,setIsChar] = useState(false)
-
-
-  
+  const [isNumAllowed, setIsNumAllowed] = useState(false);
+  const [isChar, setIsChar] = useState(false);
 
   //? to copy code on Clipboard
   const copyCode = (e) => {
@@ -18,22 +15,18 @@ function App() {
 
   //? To generate random password with memoization
   const passwordGenerator = useCallback(() => {
+    //? The string from the password to take
+    let smtext = "abcdefghijklmnopqrstuvwxyz";
+    smtext += smtext.toUpperCase();
 
-    //? The string from the password to take 
-  let smtext = "abcdefghijklmnopqrstuvwxyz";
-  smtext += smtext.toUpperCase();
-  
-
-
-    if(isNumAllowed){
+    if (isNumAllowed) {
       smtext += "0123456789";
     }
-    if(isChar){
-      smtext += "~!@#~`$%^&*^()-_"
-    } 
+    if (isChar) {
+      smtext += "~!@#~`$%^&*^()-_";
+    }
 
-    
-    const max = smtext.length - 1; 
+    const max = smtext.length - 1;
 
     let curr = "";
     for (let i = 0; i < len; i++) {
@@ -41,44 +34,32 @@ function App() {
     }
 
     setPassword(curr);
-  }, [len,isChar,isNumAllowed]);
-
-
+  }, [len, isChar, isNumAllowed]);
 
   useEffect(() => {
     passwordGenerator();
-  }, [len,isChar,isNumAllowed]);
+  }, [len, isChar, isNumAllowed]);
 
   return (
     <>
       <div className="container">
-        
-         
-          <input
-            type="text"
-            readOnly
-            value={password}
-            onClick={(e) => copyCode(e)}
-            style={{
-              textAlign: "center",
-              fontSize: "1.3rem",
-              backgroundColor: "#124",
-              border: "2px solid green",
-              borderRadius: "20px",
-            }}
-          />
-           <button>
-            Copy
-          </button>
+        <input
+          type="text"
+          readOnly
+          value={password}
+          onClick={(e) => copyCode(e)}
+          style={{
+            textAlign: "center",
+            fontSize: "1.3rem",
+            backgroundColor: "#124",
+            border: "2px solid green",
+            borderRadius: "20px",
+          }}
+        />
+        <button>Copy</button>
+      </div>
 
-           
-
-
-
-
-        </div>
-
-        <div>
+      <div>
         <div>
           <input
             name="len"
@@ -90,19 +71,23 @@ function App() {
             onChange={(e) => setLen(e.target.value)}
           />
           <label htmlFor="len"> Length {len} </label>
-          <input type="checkbox" id="char" name="char" value={isChar} onChange={(e)=>setIsChar(prev => !prev)} />
+          <input
+            type="checkbox"
+            id="char"
+            name="char"
+            value={isChar}
+            onChange={(e) => setIsChar((prev) => !prev)}
+          />
 
-<label htmlFor="char"> Character allowed  </label>
+          <label htmlFor="char"> Character allowed </label>
 
-
-<input type="checkbox" 
-id="num"
-name="name"
-value={isNumAllowed}
-onChange={()=>setIsNumAllowed(prev=>!prev)}
-/>
-
-
+          <input
+            type="checkbox"
+            id="num"
+            name="name"
+            value={isNumAllowed}
+            onChange={() => setIsNumAllowed((prev) => !prev)}
+          />
         </div>
       </div>
     </>
