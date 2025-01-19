@@ -54,8 +54,6 @@ function App() {
         justifyContent : "center",
         alignItems: 'center',
 
-     
-
 
       }}
       >
