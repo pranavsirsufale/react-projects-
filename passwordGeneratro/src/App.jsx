@@ -13,6 +13,10 @@ function App() {
     alert(`The Code is Copied : ${e.target.value}`);
   };
 
+  const handleCopy = (e) => {
+    console.log(e.parentNode)
+  }
+
   //? To generate random password with memoization
   const passwordGenerator = useCallback(() => {
     //? The string from the password to take
@@ -43,6 +47,10 @@ function App() {
   return (
     <>
       <div className="container">
+
+        <div>
+
+        
         <input
           type="text"
           readOnly
@@ -54,9 +62,22 @@ function App() {
             backgroundColor: "#124",
             border: "2px solid green",
             borderRadius: "20px",
+            padding: '0.8rem'
           }}
         />
-        <button>Copy</button>
+        <button
+        style={{
+          textAlign: "center",
+          fontSize: "1.3rem",
+          backgroundColor: "#124",
+          border: "2px solid green",
+          borderRadius: "20px",
+          
+        }}
+
+        onClick={(e)=>handleCopy(e)}
+        >Copy</button>
+        </div>
       </div>
 
       <div>
