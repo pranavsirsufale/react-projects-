@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <h1>
-        Pranav loves Pooja
+        Hey Tere IT's my Todo application
       </h1>
       <Todo prop={{todos,setTodos}} />
     </>
