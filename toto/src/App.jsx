@@ -8,7 +8,8 @@ function App() {
   const [todos , setTodos ] = useState([
     {
       id : Date.now(), 
-      todo : 'buy milk'
+      todo : 'buy milk',
+      done : false
     }
   ])
 
