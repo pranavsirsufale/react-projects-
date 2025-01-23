@@ -12,7 +12,7 @@ const Todo = ({ prop }) => {
     let todoObj = {
       id: Date.now(),
       todo: newTodo,
-      done : false
+      done: false,
     };
     setTodos((prevtodos) => [...prevtodos, todoObj]);
     setNewTodo("");
@@ -22,15 +22,13 @@ const Todo = ({ prop }) => {
     setTodos((prev) => prev.filter((obj) => obj.id !== id));
   };
 
-
   const handleMarkDone = (id) => {
-    setTodos((prevArray)=>(
-        prevArray.map((currObj)=>(
-
-            currObj.id === id ?   { ...currObj, done : !currObj.done} : currObj
-        ))
-    ))
-  }
+    setTodos((prevArray) =>
+      prevArray.map((currObj) =>
+        currObj.id === id ? { ...currObj, done: !currObj.done } : currObj
+      )
+    );
+  };
 
   return (
     <div>
@@ -52,9 +50,8 @@ const Todo = ({ prop }) => {
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
-
-            {/*  ADDED STRIKE THROUGH OVER HERE  */}
-                {/* {
+              {/*  ADDED STRIKE THROUGH OVER HERE  */}
+              {/* {
                     todo.done ? 
                     <s>
                         {
@@ -65,27 +62,16 @@ const Todo = ({ prop }) => {
                     : todo.todo
                 } */}
 
-                {
-                    todo.todo
-                }
+              {todo.todo}
 
-             
-
-              {
-                todo.done ? "✅" : "❌"
-              } 
-
+              {todo.done ? "✅" : "❌"}
 
               <button onClick={() => handleDelete(todo.id)}>Delete</button>
-              <button
-              onClick={()=>handleMarkDone(todo.id)}
-              
-              > Mark as 
-              {
-                todo.done ? 'Done' : "Undone"
-              }
-              
-                </button>
+              <button onClick={() => handleMarkDone(todo.id)}>
+                {" "}
+                Mark as
+                {todo.done ? "Done" : "Undone"}
+              </button>
             </li>
           ))}
         </ul>
