@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BarChart  } from '@mui/x-charts/BarChart';
 import { PieChart } from '@mui/x-charts/PieChart';
+import { desktopOS , valueFormatter } from './webusage/WebUsage';
 
 export default function SimpleCharts({data}) {
     
@@ -14,29 +15,31 @@ export default function SimpleCharts({data}) {
         count
     }
 
+    console.log(data)
+    console.log(desktopOS)
 
-  const desktopOS = [
-        {
-          label: 'Windows',
-          value: 72.72,
-        },
-        {
-          label: 'OS X',
-          value: 16.38,
-        },
-        {
-          label: 'Linux',
-          value: 3.83,
-        },
-        {
-          label: 'Chrome OS',
-          value: 2.42,
-        },
-        {
-          label: 'Other',
-          value: 4.65,
-        },
-      ];
+//   const desktopOS = [
+//         {
+//           label: 'Windows',
+//           value: 72.72,
+//         },
+//         {
+//           label: 'OS X',
+//           value: 16.38,
+//         },
+//         {
+//           label: 'Linux',
+//           value: 3.83,
+//         },
+//         {
+//           label: 'Chrome OS',
+//           value: 2.42,
+//         },
+//         {
+//           label: 'Other',
+//           value: 4.65,
+//         },
+//       ];
 
 
   return (
@@ -56,6 +59,8 @@ export default function SimpleCharts({data}) {
     //   width={500}
     //   height={300}
     // />
+
+    
   
 
 
