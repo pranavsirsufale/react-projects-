@@ -9,7 +9,6 @@ import { store } from "./components/store/store";
 import { useState } from "react";
 import App from "./App";
 
-
 // import { ThemeProvider, createTheme } from "@mui/material/styles";
 // import CssBaseline from "@mui/material/CssBaseline";
 
@@ -19,13 +18,8 @@ import App from "./App";
 //   },
 // });
 
-
 createRoot(document.getElementById("root")).render(
-
-
   <Provider store={store}>
-   
-    
-    <App  />
+    <App />
   </Provider>
 );
