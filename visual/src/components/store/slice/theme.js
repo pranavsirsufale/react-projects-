@@ -1,22 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    theme : true,
-}
+  theme: true,
+};
 
-const themeSlice = createSlice({
-    name : 'theme',
-    initialState,
-    reducers : {
-        themeSwither : (state)=>{
-            state.theme = !state.theme
-        }
-    }
-}) 
+export const themeSlice = createSlice({
+  name: "theme",
+  initialState,
+  reducers: {
+    themeSwither: (state) => {
+      state.theme = !state.theme;
+    },
+  },
+});
 
+export const { themeSwither } = themeSlice.actions;
 
-
-
-export const { themeSwither} =themeSlice.actions 
-
-export default themeSlice.reducer
+export default themeSlice.reducer;
