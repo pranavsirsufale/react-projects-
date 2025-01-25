@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { themeSwither } from "../store/slice/theme";
+import { CiDark } from "react-icons/ci";
 
 //todo we don't use a tag in react because it relodes the page
 //! DIFFERENT BETWEENT LINK vS NAVLINK >>
 
-export default function Header(theme) {
+export default function Header() {
 
 
   const dark = useSelector((state) => state.themeReducer.theme);
@@ -17,7 +18,7 @@ export default function Header(theme) {
   useEffect(() => {
     if (!dark) {
       setTheme("light");
-      theTheme(theme)
+      (theme)
     }
   }, [dark]);
 

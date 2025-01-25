@@ -4,13 +4,16 @@ import Footer from "../components/footer/Footer";
 
 
 
-const OutLet = (theme) => {
+const OutLet = () => {
 
-  console.log(theme)
+ 
+
+
+
 
   return (
     <>
-    <Header />
+    <Header  />
       <Outlet/>
       <Footer/>
     </>

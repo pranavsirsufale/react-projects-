@@ -9,8 +9,6 @@ export default function SimpleCharts({data}) {
         return acc += parseFloat(data.Count)
     },0)
 
-    console.log(total)
-
     const genders = data.map((data)=> ({ label : `${data.Gender} - ${data.Count} ` ,value : `${(parseFloat((parseFloat(data.Count)/ total ) * 100).toFixed(2))} ` }))
 
 

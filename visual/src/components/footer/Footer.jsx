@@ -7,12 +7,7 @@ import { useSelector  } from 'react-redux';
 export default function Footer() {
 
     const dark = useSelector((state)=>state.themeReducer.theme)
-
-   
-
     const [theme,setTheme ] = useState('dark')
-
-    console.log(theme)
 
     useEffect(()=>{
         if(!dark){
