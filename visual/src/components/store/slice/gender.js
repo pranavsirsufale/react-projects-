@@ -11,12 +11,12 @@ export const genderSlice = createSlice({
     name : 'gender',
     initialState,
     reducers : {
-        addGenderData : (state,action) => {
-
+        addPHDGenderData : (state,action) => {
+            state.gender.phd = action.payload
         }
     }
 })
 
-export const { addGenderData } = genderSlice.actions
+export const { addPHDGenderData } = genderSlice.actions
 
 export default genderSlice.reducer

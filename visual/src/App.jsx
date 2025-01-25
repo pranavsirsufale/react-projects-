@@ -9,13 +9,10 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Github from "./github/Github";
 
-
 function App() {
   const dark = useSelector((state) => state.themeReducer.theme);
 
   const [theme, setTheme] = useState("dark");
-
-  
 
   useEffect(() => {
     if (!dark) {
@@ -39,9 +36,9 @@ function App() {
           element: <CsvReader />,
         },
         {
-          path : 'github',
-          element :  <Github />
-        }
+          path: "github",
+          element: <Github />,
+        },
       ],
     },
   ]);
