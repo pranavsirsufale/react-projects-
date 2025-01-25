@@ -1,10 +1,32 @@
 
-import React from 'react'
+import {useState , useEffect} from 'react'
 import { Link, NavLink, } from 'react-router-dom';
+import { useSelector  } from 'react-redux';
+
 
 export default function Footer() {
+
+    const dark = useSelector((state)=>state.themeReducer.theme)
+
+   
+
+    const [theme,setTheme ] = useState('dark')
+
+    console.log(theme)
+
+    useEffect(()=>{
+        if(!dark){
+            setTheme('light')
+        }
+    },[dark])
+
+
   return (
-      <footer className="bg-dark border-y">
+      <footer className="border-y"
+      style={{
+        backgroundColor : dark? `#201123` : '#e2f0f1'
+      }}
+      >
           <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
               <div className="md:flex md:justify-between">
                   <div className="mb-6 md:mb-0">
