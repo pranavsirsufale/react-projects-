@@ -6,7 +6,9 @@ import { themeSwither } from "../store/slice/theme";
 //todo we don't use a tag in react because it relodes the page
 //! DIFFERENT BETWEENT LINK vS NAVLINK >>
 
-export default function Header() {
+export default function Header(theme) {
+
+
   const dark = useSelector((state) => state.themeReducer.theme);
   const dispatch = useDispatch();
 
@@ -15,6 +17,7 @@ export default function Header() {
   useEffect(() => {
     if (!dark) {
       setTheme("light");
+      theTheme(theme)
     }
   }, [dark]);
 

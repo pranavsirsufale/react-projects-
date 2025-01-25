@@ -6,19 +6,26 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import OutLet from "./router/OutLet";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./components/store/store";
+
+
+
+
+const theme = (theme) => {
+  return theme
+}
 
 const darkTheme = createTheme({
   palette: {
-    mode: "dark",
+    mode: theme() || 'dark'
   },
 });
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <OutLet />,
+    element: <OutLet theme={theme} />,
     children: [
       {
         path: "home",
