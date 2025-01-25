@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { themeSwither } from "../store/slice/theme";
 import { CiDark } from "react-icons/ci";
+import { FiSun } from "react-icons/fi";
 
 //todo we don't use a tag in react because it relodes the page
 //! DIFFERENT BETWEENT LINK vS NAVLINK >>
@@ -42,6 +43,18 @@ export default function Header() {
               alt="Logo"
             />
           </Link>
+
+          <div>
+
+
+          {
+              dark ? 
+              <FiSun onClick={handleTheme} />
+              : 
+              <CiDark onClick={handleTheme} /> 
+            }
+            </div>
+
           <div className="flex items-center lg:order-2">
             <Link
               to="#"
@@ -123,9 +136,7 @@ export default function Header() {
                 </NavLink>
               </li>
 
-              <li>
-                <button onClick={handleTheme}>Swith theme</button>
-              </li>
+           
             </ul>
           </div>
         </div>
