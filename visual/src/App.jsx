@@ -8,7 +8,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Github from "./github/Github";
-
+import ContactUsForm from "./components/contact/ContactUsForm";
 
 function App() {
   const dark = useSelector((state) => state.themeReducer.theme);
@@ -39,6 +39,10 @@ function App() {
         {
           path: "github",
           element: <Github />,
+        },
+        {
+          path: "contactus",
+          element: <ContactUsForm />,
         },
       ],
     },

@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ContactUsForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [focused, setFocused] = useState({
@@ -42,24 +42,24 @@ const ContactUsForm = () => {
   };
 
   const validateForm = () => {
-    const newErrors = { name: '', email: '', message: '' };
+    const newErrors = { name: "", email: "", message: "" };
     let valid = true;
 
     if (!formData.name) {
-      newErrors.name = 'Name is required.';
+      newErrors.name = "Name is required.";
       valid = false;
     }
 
     if (!formData.email) {
-      newErrors.email = 'Email is required.';
+      newErrors.email = "Email is required.";
       valid = false;
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email address is invalid.';
+      newErrors.email = "Email address is invalid.";
       valid = false;
     }
 
     if (!formData.message) {
-      newErrors.message = 'Message is required.';
+      newErrors.message = "Message is required.";
       valid = false;
     }
 
@@ -71,41 +71,53 @@ const ContactUsForm = () => {
     e.preventDefault();
     if (validateForm()) {
       // Handle form submission (e.g., send to an API)
-      alert('Form submitted successfully!');
+      alert("Form submitted successfully!");
       setFormData({
-        name: '',
-        email: '',
-        message: '',
+        name: "",
+        email: "",
+        message: "",
       });
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-50">
-      <div className="w-full max-w-lg p-6 bg-white rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl">
-        <h2 className="text-3xl font-semibold mb-6 text-center text-blue-600">Contact Us</h2>
+    <div className="flex justify-center items-center h-screen">
+      <div className="w-full max-w-lg p-6 rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl">
+        <h2 className="text-3xl font-semibold mb-6 text-center text-blue-600">
+          Contact Us
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="name" className="block text-sm font-medium ">
               Name
             </label>
+
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              onFocus={() => handleFocus('name')}
-              onBlur={() => handleBlur('name')}
+              onFocus={() => handleFocus("name")}
+              onBlur={() => handleBlur("name")}
               className={`mt-1 p-3 w-full border-2 rounded-lg transition-all duration-300 
-                          ${focused.name ? 'border-blue-500' : 'border-gray-300'} 
-                          ${errors.name && !focused.name ? 'border-red-500' : ''}`}
+                          ${
+                            focused.name ? "border-blue-500" : "border-gray-300"
+                          } 
+                          ${
+                            errors.name && !focused.name ? "border-red-500" : ""
+                          }`}
             />
-            {errors.name && !focused.name && <p className="text-sm text-red-500">{errors.name}</p>}
+            {errors.name && !focused.name && (
+              <p className="text-sm text-red-500">{errors.name}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               Email
             </label>
             <input
@@ -114,17 +126,30 @@ const ContactUsForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              onFocus={() => handleFocus('email')}
-              onBlur={() => handleBlur('email')}
+              onFocus={() => handleFocus("email")}
+              onBlur={() => handleBlur("email")}
               className={`mt-1 p-3 w-full border-2 rounded-lg transition-all duration-300 
-                          ${focused.email ? 'border-blue-500' : 'border-gray-300'} 
-                          ${errors.email && !focused.email ? 'border-red-500' : ''}`}
+                          ${
+                            focused.email
+                              ? "border-blue-500"
+                              : "border-gray-300"
+                          } 
+                          ${
+                            errors.email && !focused.email
+                              ? "border-red-500"
+                              : ""
+                          }`}
             />
-            {errors.email && !focused.email && <p className="text-sm text-red-500">{errors.email}</p>}
+            {errors.email && !focused.email && (
+              <p className="text-sm text-red-500">{errors.email}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-gray-700"
+            >
               Message
             </label>
             <textarea
@@ -132,14 +157,24 @@ const ContactUsForm = () => {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              onFocus={() => handleFocus('message')}
-              onBlur={() => handleBlur('message')}
+              onFocus={() => handleFocus("message")}
+              onBlur={() => handleBlur("message")}
               rows="4"
               className={`mt-1 p-3 w-full border-2 rounded-lg transition-all duration-300 
-                          ${focused.message ? 'border-blue-500' : 'border-gray-300'} 
-                          ${errors.message && !focused.message ? 'border-red-500' : ''}`}
+                          ${
+                            focused.message
+                              ? "border-blue-500"
+                              : "border-gray-300"
+                          } 
+                          ${
+                            errors.message && !focused.message
+                              ? "border-red-500"
+                              : ""
+                          }`}
             />
-            {errors.message && !focused.message && <p className="text-sm text-red-500">{errors.message}</p>}
+            {errors.message && !focused.message && (
+              <p className="text-sm text-red-500">{errors.message}</p>
+            )}
           </div>
 
           <button
