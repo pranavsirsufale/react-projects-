@@ -29,16 +29,22 @@ export default function SimpleCharts({ data }) {
       />
 
       <div className="flex items-center justify-center">
+
+        
         <img
           src="../../public/gender/boy.png"
-          className="hover:scale-110 transition duration-300 hover:rotate-3"
+          className="hover:scale-110 transition duration-300 hover:rotate-3
+          hover:contrast-120 hover:drop-shadow-[0_0_20px_rgba(0,123,255,0.8)]
+          "
           alt="boy"
           width="100rem"
         />
 
         <img
           src="../../public/gender/girl.png"
-          className="hover:scale-110 transition duration-300 hover:rotate-3"
+          className="hover:scale-110 transition duration-300 hover:rotate-3
+          hover:contrast-120 hover:drop-shadow-[0_0_20px_rgba(0,123,255,0.8)]
+          "
           alt="girl"
           width="100rem"
         />
@@ -47,8 +53,17 @@ export default function SimpleCharts({ data }) {
           src="../../public/gender/trans.png"
           alt="Transgender"
           width="100rem"
-          className="hover:scale-110 transition duration-300 hover:rotate-3"
+          className="hover:scale-110 transition duration-300 hover:rotate-3
+          
+        hover:contrast-120 hover:drop-shadow-[0_0_20px_rgba(0,123,255,0.8)]
+
+          "
         />
+
+
+
+
+
 
         {/* <img
             src="../../public/gender/trans.png"
