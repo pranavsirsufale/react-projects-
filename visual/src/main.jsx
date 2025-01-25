@@ -14,17 +14,20 @@ import OutLet from './router/OutLet'
 const router = createBrowserRouter([
   {
     path : '/',
-    element : <OutLet/>
-  },
-  {
-    path : 'home',
-    element : <Home />
+    element : <OutLet/>,
+    children : [
+      {
+        path : 'home',
+        element : <Home />
+      }
+      ,
+      {
+        path : 'graph',
+        element : <CsvReader/>
+      }
+    ]
   }
-  ,
-  {
-    path : 'graph',
-    element : <CsvReader/>
-  }
+  
 ])
 
 
