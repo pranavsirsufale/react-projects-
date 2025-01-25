@@ -6,21 +6,6 @@ import SimpleCharts from './LinePlot';
 const CsvReader = () => {
   const [data, setData] = useState([]);
 
-  console.log(data)
-
-
-
-// const newobje = {
-//     "":""
-// }
-
-// console.log(Object.is(newobje) === '' ? 'empty' : 'notempty')
-
-// console.log(newObj.length > 0 ? "true" : 'false')
-  
-
-
-
   useEffect(() => {
     fetch("../../public/csv/phd_gender.csv")
       .then(response => response.text())
