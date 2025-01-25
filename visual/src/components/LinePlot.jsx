@@ -9,7 +9,34 @@ export default function SimpleCharts({data}) {
     const count = data.map((data)=>data.Count && data.Count).filter((data)=>data)
 
 
+    const genders = {
+        gender,
+        count
+    }
 
+
+  const desktopOS = [
+        {
+          label: 'Windows',
+          value: 72.72,
+        },
+        {
+          label: 'OS X',
+          value: 16.38,
+        },
+        {
+          label: 'Linux',
+          value: 3.83,
+        },
+        {
+          label: 'Chrome OS',
+          value: 2.42,
+        },
+        {
+          label: 'Other',
+          value: 4.65,
+        },
+      ];
 
 
   return (
@@ -29,6 +56,7 @@ export default function SimpleCharts({data}) {
     //   width={500}
     //   height={300}
     // />
+  
 
 
     <PieChart
