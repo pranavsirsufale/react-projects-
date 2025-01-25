@@ -29,8 +29,6 @@ export default function SimpleCharts({ data }) {
       />
 
       <div className="flex items-center justify-center">
-
-        
         <img
           src="../../public/gender/boy.png"
           className="hover:scale-110 transition duration-300 hover:rotate-3
@@ -59,11 +57,6 @@ export default function SimpleCharts({ data }) {
 
           "
         />
-
-
-
-
-
 
         {/* <img
             src="../../public/gender/trans.png"

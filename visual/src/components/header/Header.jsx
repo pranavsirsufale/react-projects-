@@ -4,22 +4,32 @@ import { useSelector, useDispatch } from "react-redux";
 import { themeSwither } from "../store/slice/theme";
 import { CiDark } from "react-icons/ci";
 import { FiSun } from "react-icons/fi";
+import { useMediaQuery } from "@mui/material";
+import { FcList } from "react-icons/fc";
+import { FcMinus } from "react-icons/fc";
 
 //todo we don't use a tag in react because it relodes the page
 //! DIFFERENT BETWEENT LINK vS NAVLINK >>
 
 export default function Header() {
-
+  const isMobile = useMediaQuery("(max-width: 600px)");
+  const isTablet = useMediaQuery("(min-width: 601px) and (max-width: 1024px)");
+  const isDesktop = useMediaQuery("(min-width: 1025px)");
 
   const dark = useSelector((state) => state.themeReducer.theme);
   const dispatch = useDispatch();
 
   const [theme, setTheme] = useState("dark");
+  const [on, setOn] = useState(true);
+
+  const toggle = () => {
+    setOn((is) => !is);
+  };
 
   useEffect(() => {
     if (!dark) {
       setTheme("light");
-      (theme)
+      theme;
     }
   }, [dark]);
 
@@ -35,7 +45,7 @@ export default function Header() {
           backgroundColor: dark ? `#201123` : "#e2f0f1",
         }}
       >
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <div className=" flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
             <img
               src="../../../public/logo/logo.jpg"
@@ -44,16 +54,21 @@ export default function Header() {
             />
           </Link>
 
+          {isMobile ||
+            (isTablet &&
+              (on ? (
+                <FcMinus className="duration-300" onClick={toggle} />
+              ) : (
+                <FcList className="duration-300" onClick={toggle} />
+              )))}
+
           <div>
-
-
-          {
-              dark ? 
+            {dark ? (
               <FiSun onClick={handleTheme} />
-              : 
-              <CiDark onClick={handleTheme} /> 
-            }
-            </div>
+            ) : (
+              <CiDark onClick={handleTheme} />
+            )}
+          </div>
 
           <div className="flex items-center lg:order-2">
             <Link
@@ -71,7 +86,9 @@ export default function Header() {
           </div>
 
           <div
-            className=" justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            className={`${
+              !on && "hidden"
+            } justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
@@ -135,8 +152,6 @@ export default function Header() {
                   Github
                 </NavLink>
               </li>
-
-           
             </ul>
           </div>
         </div>
