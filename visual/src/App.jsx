@@ -7,16 +7,6 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 
 
-const router = createBrowserRouter([
-  {
-    path : '/',
-    element : <Home/>
-  },
-  {
-    path : '/graph',
-    element : <CsvReader/>
-  }
-])
 
 
 
@@ -25,11 +15,8 @@ function App() {
   return (
     <>
     
-      <Header/>
-    <RouterProvider router={router} >
-      <OutLet/>
-    </RouterProvider>
-      <Footer/>
+
+
     </>
   )
 }

@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 
 
-const OutLet = (children) => {
+const OutLet = () => {
   return (
-      <Outlet>{children}</Outlet>
+    <>
+    <Header/>
+      <Outlet/>
+      <Footer/>
+    </>
   );
 };
 
