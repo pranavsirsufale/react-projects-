@@ -1,4 +1,5 @@
-import LinePlot from "./components/LinePlot"
+import SimpleCharts from "./components/LinePlot"
+import CsvReader from "./components/GetData"
 
 
 
@@ -6,7 +7,10 @@ function App() {
 
   return (
     <>
-    <LinePlot/>
+    {/* <SimpleCharts/> */}
+
+    <CsvReader/>
+
     </>
   )
 }
