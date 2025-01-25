@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
+import SimpleCharts from './LinePlot';
 
 const CsvReader = () => {
   const [data, setData] = useState([]);
 
-  console.log(data)
+
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -42,6 +43,13 @@ const CsvReader = () => {
           ))}
         </tbody>
       </table> */}
+
+
+    {
+        data.length > 0 && <SimpleCharts data={data}  />
+    }
+
+
     </div>
   );
 };
