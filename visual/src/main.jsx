@@ -1,14 +1,35 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import Header from './components/header/Header'
-
-
-import SimpleCharts from "./components/LinePlot"
 import CsvReader from './components/GetData'
 import Home from './components/home/Home'
 import { createBrowserRouter , RouterProvider  } from "react-router-dom"
 import OutLet from './router/OutLet'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const router = createBrowserRouter([
@@ -34,6 +55,11 @@ const router = createBrowserRouter([
 
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} >
-</RouterProvider>
+  <ThemeProvider theme={darkTheme}>
+  <CssBaseline />
+    <RouterProvider router={router} />
+
+</ThemeProvider>
+
+
 )
