@@ -7,8 +7,7 @@ import { useSelector } from "react-redux";
 // import { NavLink } from "react-router-dom";
 
 export default function SimpleCharts({ data, allGenderData }) {
-
-  const dark = useSelector((state)=> state.themeReducer.theme)
+  const dark = useSelector((state) => state.themeReducer.theme);
 
   const [tempData, setTempData] = useState(data);
   const [dataLable, setDataLabel] = useState(
@@ -45,11 +44,7 @@ export default function SimpleCharts({ data, allGenderData }) {
 
   return (
     <>
-      <div
-      
-      className="flex justify-center align-center my-7"
-      
-      >
+      <div className="flex justify-center align-center my-7">
         <h1>{dataLable}</h1>
       </div>
 
@@ -96,21 +91,20 @@ export default function SimpleCharts({ data, allGenderData }) {
         />
       </div>
 
-
-
-      <div className={`flex justify-center align-center max-w-[30vw] m-10 p-5 bg-emerald-${dark ? '950' : '100'} `}>
+      <div
+        className={`flex justify-center align-center max-w-[30vw] m-10 p-5 bg-emerald-${
+          dark ? "950" : "100"
+        } `}
+      >
         <ul
-        
-        // className="flex justify-center align-center px-10 w-full overflow-x-auto"
+          // className="flex justify-center align-center px-10 w-full overflow-x-auto"
 
-        className="flex flex-col gap-10 max-h-20 overflow-auto"
-        
+          className="flex flex-col gap-10 max-h-20 overflow-auto"
         >
-
           {allGenderData &&
             allGenderData.map((genderDataObject) => (
-              <li key={genderDataObject["PROGRAMME.NAME"]}
-              
+              <li
+                key={genderDataObject["PROGRAMME.NAME"]}
                 className="px-5 ml-10"
               >
                 {/* <NavLink to={`programmewisegender/${genderDataObject['PROGRAMME.NAME']}`} > */}
