@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState} from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { desktopOS, valueFormatter } from "./webusage/WebUsage";
@@ -10,18 +10,36 @@ import { NavLink } from 'react-router-dom'
 
 export default function SimpleCharts({ data , allGenderData }) {
 
+  
+  
+  const [tempData ,setTempData] = useState(data)
+  
+  console.log(tempData)
+  const [dataLable , setDataLabel] = useState('Total Enrollment Gender Distribution')
 
-  const total = data.reduce((acc, data) => {
+
+
+  const total = tempData.reduce((acc, data) => {
     return (acc += parseFloat(data.Count));
   }, 0);
 
-  const genders = data.map((data) => ({
+ 
+  const genders = tempData.map((data) => ({
     label: `${data.Gender} - ${data.Count} `,
     value: `${parseFloat((parseFloat(data.Count) / total) * 100).toFixed(2)} `,
   }));
 
   return (
     <>
+
+    <div>
+      <h1>
+        {
+          dataLable
+        }
+      </h1>
+    </div>
+
       <PieChart
         series={[
           {
@@ -77,7 +95,7 @@ export default function SimpleCharts({ data , allGenderData }) {
 
 
 
-            <NavLink >
+            <NavLink to={`programmewisegender/:${genderDataObject['PROGRAMME.NAME']}`} >
 
                {
                  genderDataObject['PROGRAMME.NAME']

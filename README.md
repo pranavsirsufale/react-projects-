@@ -2,7 +2,7 @@
 # [second Project](https://reduxtkproject.vercel.app/)
 # [Third Project ](https://react-projects-liard-ten.vercel.app/)
 # [Fourth Theme switcher](https://react-projects-6ogn.vercel.app/)
-# [Fifth Project Password Generator ](https://github.com/pranavsirsufale/react-projects-/tree/main/passwordGeneratro)
+# [Fifth Project Password Generator ](https://react-projects-kappa-neon.vercel.app/)
 
 
 # React Fiber Architecture

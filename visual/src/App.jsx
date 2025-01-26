@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Github from "./github/Github";
 import ContactUsForm from "./components/contact/ContactUsForm";
+import ProgrammeWiseGender from './components/gender/ProgrammeWiseGender'
 
 function App() {
   const dark = useSelector((state) => state.themeReducer.theme);
@@ -35,6 +36,12 @@ function App() {
         {
           path: "graph",
           element: <CsvReader />,
+          children : [
+            {
+              path : "/graph/programmewisegender/:name",
+              element : <ProgrammeWiseGender />
+            }
+          ]
         },
         {
           path: "github",
