@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { desktopOS, valueFormatter } from "./webusage/WebUsage";
+import { useSelector } from "react-redux";
 // import { BarChart } from "@mui/x-charts/BarChart";
 // import { FcBusinessman } from "react-icons/fc";
 // import { NavLink } from "react-router-dom";
 
 export default function SimpleCharts({ data, allGenderData }) {
+
+  const dark = useSelector((state)=> state.themeReducer.theme)
 
   const [tempData, setTempData] = useState(data);
   const [dataLable, setDataLabel] = useState(
@@ -42,7 +45,11 @@ export default function SimpleCharts({ data, allGenderData }) {
 
   return (
     <>
-      <div>
+      <div
+      
+      className="flex justify-center align-center my-7"
+      
+      >
         <h1>{dataLable}</h1>
       </div>
 
@@ -58,7 +65,7 @@ export default function SimpleCharts({ data, allGenderData }) {
         height={200}
       />
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center pr-24 pt-5">
         <img
           src="/gender/boy.png"
           className="hover:scale-110 transition duration-300 hover:rotate-3
@@ -89,11 +96,23 @@ export default function SimpleCharts({ data, allGenderData }) {
         />
       </div>
 
-      <div>
-        <ul>
+
+
+      <div className={`flex justify-center align-center max-w-[30vw] m-10 p-5 bg-emerald-${dark ? '950' : '100'} `}>
+        <ul
+        
+        // className="flex justify-center align-center px-10 w-full overflow-x-auto"
+
+        className="flex flex-col gap-10 max-h-20 overflow-auto"
+        
+        >
+
           {allGenderData &&
             allGenderData.map((genderDataObject) => (
-              <li key={genderDataObject["PROGRAMME.NAME"]}>
+              <li key={genderDataObject["PROGRAMME.NAME"]}
+              
+                className="px-5 ml-10"
+              >
                 {/* <NavLink to={`programmewisegender/${genderDataObject['PROGRAMME.NAME']}`} > */}
 
                 <button onClick={() => handleShowData(genderDataObject)}>
