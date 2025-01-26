@@ -1,66 +1,50 @@
-import React, { useState} from "react";
-import { BarChart } from "@mui/x-charts/BarChart";
+import React, { useState } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { desktopOS, valueFormatter } from "./webusage/WebUsage";
-import { FcBusinessman } from "react-icons/fc";
-import { NavLink } from 'react-router-dom'
+// import { BarChart } from "@mui/x-charts/BarChart";
+// import { FcBusinessman } from "react-icons/fc";
+// import { NavLink } from "react-router-dom";
 
+export default function SimpleCharts({ data, allGenderData }) {
 
-
-
-export default function SimpleCharts({ data , allGenderData }) {
-
-  
-  
-  const [tempData ,setTempData] = useState(data)
-
-  const [dataLable , setDataLabel] = useState('Total Enrollment Gender Distribution')
-
-
+  const [tempData, setTempData] = useState(data);
+  const [dataLable, setDataLabel] = useState(
+    "Total Enrollment Gender Distribution"
+  );
 
   const total = tempData.reduce((acc, data) => {
     return (acc += parseFloat(data.Count));
   }, 0);
 
- 
   const genders = tempData.map((data) => ({
     label: `${data.Gender} - ${data.Count} `,
     value: `${parseFloat((parseFloat(data.Count) / total) * 100).toFixed(2)} `,
   }));
 
-
-
   const handleShowData = (programmeData) => {
-  
-    console.log(programmeData['PROGRAMME.NAME'])
+    console.log(programmeData["PROGRAMME.NAME"]);
 
+    setDataLabel(programmeData["PROGRAMME.NAME"]);
 
-//! UNDERSTAND THIS LETTER >>>>>>>> IMP
-    const output = Object.entries(programmeData)
-  .filter(([key]) => key !== "Total" && key !== "PROGRAMME.NAME" && key !== "")
-  .map(([key, value], index) => ({
-    "": (index + 1).toString(),
-    Gender: key,
-    Count: value
-  }));
-  
+    //! UNDERSTAND THIS LETTER >>>>>>>> IMP
+    const reshapedObject = Object.entries(programmeData)
+      .filter(
+        ([key]) => key !== "Total" && key !== "PROGRAMME.NAME" && key !== ""
+      )
+      .map(([key, value], index) => ({
+        "": (index + 1).toString(),
+        Gender: key,
+        Count: value,
+      }));
 
-  }
-
-
-
-
+    setTempData(reshapedObject);
+  };
 
   return (
     <>
-
-    <div>
-      <h1>
-        {
-          dataLable
-        }
-      </h1>
-    </div>
+      <div>
+        <h1>{dataLable}</h1>
+      </div>
 
       <PieChart
         series={[
@@ -105,45 +89,22 @@ export default function SimpleCharts({ data , allGenderData }) {
         />
       </div>
 
-        <div>
+      <div>
         <ul>
+          {allGenderData &&
+            allGenderData.map((genderDataObject) => (
+              <li key={genderDataObject["PROGRAMME.NAME"]}>
+                {/* <NavLink to={`programmewisegender/${genderDataObject['PROGRAMME.NAME']}`} > */}
 
-        {
-          allGenderData &&  
-          allGenderData
-          .map((genderDataObject)=>(
-
-            <li key={genderDataObject['PROGRAMME.NAME']} 
-            
-            
-            >
-
-
-
-            {/* <NavLink to={`programmewisegender/${genderDataObject['PROGRAMME.NAME']}`} > */}
-
-            <button
-            
-            onClick={()=>handleShowData(genderDataObject)}
-            
-            >
-
-
-               {
-                 genderDataObject['PROGRAMME.NAME']
-                }
+                <button onClick={() => handleShowData(genderDataObject)}>
+                  {genderDataObject["PROGRAMME.NAME"]}
                 </button>
-              
-            {/* </NavLink> */}
-                </li>
-           
-          ))
-        }
 
+                {/* </NavLink> */}
+              </li>
+            ))}
         </ul>
-        </div>
-
-
+      </div>
     </>
   );
 }
