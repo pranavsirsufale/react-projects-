@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
-import SimpleCharts from "./LinePlot";
+import SimpleCharts from "./Pie";
 import { useDispatch, useSelector } from "react-redux";
 import { addPHDGenderData , addPhdProgrammeWiseGenderDistribution } from "./store/slice/gender";
 
