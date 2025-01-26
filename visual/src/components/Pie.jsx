@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 // import { FcBusinessman } from "react-icons/fc";
 // import { NavLink } from "react-router-dom";
 
-export default function SimpleCharts({ data, allGenderData }) {
+export default function Pie({ data, allGenderData }) {
   const dark = useSelector((state) => state.themeReducer.theme);
 
   const [tempData, setTempData] = useState(data);
@@ -100,9 +100,12 @@ export default function SimpleCharts({ data, allGenderData }) {
         <ul
           // className="flex justify-center align-center px-10 w-full overflow-x-auto"
 
-          className="flex flex-col max-h-20 overflow-auto
+          className="flex flex-col max-h-20 overflow-auto 
           
           "
+          // style={{
+          //   scrollPaddingInline : '2px solid red'
+          // }}
         >
           {allGenderData &&
             allGenderData.map((genderDataObject) => (

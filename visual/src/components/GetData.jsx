@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
-import SimpleCharts from "./Pie";
+import Pie from "./Pie";
 import { useDispatch, useSelector } from "react-redux";
 import { addPHDGenderData , addPhdProgrammeWiseGenderDistribution } from "./store/slice/gender";
 
@@ -56,7 +56,7 @@ const CsvReader = () => {
     }
   }, []);
 
-  return <div>{data?.allGender?.length > 0 && <SimpleCharts data={data.allGender} allGenderData={genderEachProgramme} />}</div>;
+  return <div>{data?.allGender?.length > 0 && <Pie data={data.allGender} allGenderData={genderEachProgramme} />}</div>;
 };
 
 export default CsvReader;
