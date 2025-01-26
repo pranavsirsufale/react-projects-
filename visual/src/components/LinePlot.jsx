@@ -13,8 +13,7 @@ export default function SimpleCharts({ data , allGenderData }) {
   
   
   const [tempData ,setTempData] = useState(data)
-  
-  console.log(tempData)
+
   const [dataLable , setDataLabel] = useState('Total Enrollment Gender Distribution')
 
 
@@ -28,6 +27,29 @@ export default function SimpleCharts({ data , allGenderData }) {
     label: `${data.Gender} - ${data.Count} `,
     value: `${parseFloat((parseFloat(data.Count) / total) * 100).toFixed(2)} `,
   }));
+
+
+
+  const handleShowData = (programmeData) => {
+  
+    console.log(programmeData['PROGRAMME.NAME'])
+
+
+//! UNDERSTAND THIS LETTER >>>>>>>> IMP
+    const output = Object.entries(programmeData)
+  .filter(([key]) => key !== "Total" && key !== "PROGRAMME.NAME" && key !== "")
+  .map(([key, value], index) => ({
+    "": (index + 1).toString(),
+    Gender: key,
+    Count: value
+  }));
+  
+
+  }
+
+
+
+
 
   return (
     <>
@@ -91,17 +113,28 @@ export default function SimpleCharts({ data , allGenderData }) {
           allGenderData
           .map((genderDataObject)=>(
 
-            <li key={genderDataObject['PROGRAMME.NAME']} >
+            <li key={genderDataObject['PROGRAMME.NAME']} 
+            
+            
+            >
 
 
 
-            <NavLink to={`programmewisegender/:${genderDataObject['PROGRAMME.NAME']}`} >
+            {/* <NavLink to={`programmewisegender/${genderDataObject['PROGRAMME.NAME']}`} > */}
+
+            <button
+            
+            onClick={()=>handleShowData(genderDataObject)}
+            
+            >
+
 
                {
                  genderDataObject['PROGRAMME.NAME']
                 }
+                </button>
               
-            </NavLink>
+            {/* </NavLink> */}
                 </li>
            
           ))
