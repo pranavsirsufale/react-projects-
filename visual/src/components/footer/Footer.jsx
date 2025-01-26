@@ -95,7 +95,7 @@ export default function Footer() {
               <div className="sm:flex sm:items-center sm:justify-between">
                   <span className="text-sm text-pink-500 sm:text-center">
                       © 2025 
-                      <a target='_blank' href="linkedin.com/in/pranav-sirsufale-488ba4269/" className="hover:underline">
+                      <a target='_blank' href="https://www.linkedin.com/in/pranav-sirsufale-488ba4269/" className="hover:underline">
                            pranavsirsufale
                       </a>
                       . All Rights Reserved.
