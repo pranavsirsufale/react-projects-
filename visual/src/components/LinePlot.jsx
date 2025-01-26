@@ -3,8 +3,14 @@ import { BarChart } from "@mui/x-charts/BarChart";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { desktopOS, valueFormatter } from "./webusage/WebUsage";
 import { FcBusinessman } from "react-icons/fc";
+import { NavLink } from 'react-router-dom'
 
-export default function SimpleCharts({ data }) {
+
+
+
+export default function SimpleCharts({ data , allGenderData }) {
+
+
   const total = data.reduce((acc, data) => {
     return (acc += parseFloat(data.Count));
   }, 0);
@@ -58,6 +64,35 @@ export default function SimpleCharts({ data }) {
           "
         />
       </div>
+
+        <div>
+        <ul>
+
+        {
+          allGenderData &&  
+          allGenderData
+          .map((genderDataObject)=>(
+
+            <li key={genderDataObject['PROGRAMME.NAME']} >
+
+
+
+            <NavLink >
+
+               {
+                 genderDataObject['PROGRAMME.NAME']
+                }
+              
+            </NavLink>
+                </li>
+           
+          ))
+        }
+
+        </ul>
+        </div>
+
+
     </>
   );
 }

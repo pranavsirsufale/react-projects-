@@ -2,24 +2,45 @@ import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import SimpleCharts from "./LinePlot";
 import { useDispatch, useSelector } from "react-redux";
-import { addPHDGenderData } from "./store/slice/gender";
+import { addPHDGenderData , addPhdProgrammeWiseGenderDistribution } from "./store/slice/gender";
 
 const CsvReader = () => {
   const genderData = useSelector((state) => state.genderReducer?.gender?.phd);
+  const allProgrammeGender = useSelector((state) => state.genderReducer?.phdProgrammeWiseGender)
+
+
+  
   const [data, setData] = useState([]);
+  const [genderEachProgramme , setGenderEachProgramme] = useState([])
   const dispatch = useDispatch();
 
+  
+ 
+  
   useEffect(() => {
     if (!genderData) {
-      fetch("../../public/csv/phd_gender.csv")
+
+      fetch("/csv/phd_gender.csv")
         .then((response) => response.text())
         .then((csvText) => {
           Papa.parse(csvText, {
             header: true,
             complete: (result) => {
               const dat = result.data.filter((obje) => obje[""] !== "");
-              setData(dat);
-              dispatch(addPHDGenderData(dat));
+              setData({allGender : dat});
+              dispatch(addPHDGenderData({allGender : dat}));
+              fetch('/all_programme_gender/all_programme_gender.csv')
+              .then((response)=> response.text())
+              .then((csvText) => {
+                Papa.parse(csvText , {
+                  header : true,
+                  complete : (result) => {
+                    const dat = result.data.filter((column) => column[''] !== "");
+                    setGenderEachProgramme(dat)
+                    dispatch(addPhdProgrammeWiseGenderDistribution(dat))
+                  }
+                })
+              })
             },
             error: (error) => {
               console.error("Error parsing CSV:", error);
@@ -35,7 +56,7 @@ const CsvReader = () => {
     }
   }, []);
 
-  return <div>{data.length > 0 && <SimpleCharts data={data} />}</div>;
+  return <div>{data?.allGender?.length > 0 && <SimpleCharts data={data.allGender} allGenderData={genderEachProgramme} />}</div>;
 };
 
 export default CsvReader;
