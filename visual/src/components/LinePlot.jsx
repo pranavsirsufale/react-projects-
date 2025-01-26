@@ -91,25 +91,31 @@ export default function SimpleCharts({ data, allGenderData }) {
         />
       </div>
 
+
+
+
       <div
-        className={`flex justify-center align-center max-w-[30vw] m-10 p-5 bg-emerald-${
-          dark ? "950" : "100"
-        } `}
+        className={`flex justify-center align-center max-w-[100vw] m-10 p-5 `}
       >
         <ul
           // className="flex justify-center align-center px-10 w-full overflow-x-auto"
 
-          className="flex flex-col gap-10 max-h-20 overflow-auto"
+          className="flex flex-col max-h-20 overflow-auto
+          
+          "
         >
           {allGenderData &&
             allGenderData.map((genderDataObject) => (
               <li
+              onClick={() => handleShowData(genderDataObject)}
                 key={genderDataObject["PROGRAMME.NAME"]}
-                className="px-5 ml-10"
+                className={`px-5 ml-10 bg-emerald-${!dark ? '200':'950'} p-3 hover:bg-blue-${!dark ?'100' : '500'} duration-200 cursor-pointer`}
+
+              
               >
                 {/* <NavLink to={`programmewisegender/${genderDataObject['PROGRAMME.NAME']}`} > */}
 
-                <button onClick={() => handleShowData(genderDataObject)}>
+                <button >
                   {genderDataObject["PROGRAMME.NAME"]}
                 </button>
 
