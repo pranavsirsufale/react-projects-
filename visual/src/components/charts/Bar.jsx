@@ -6,13 +6,7 @@ import { useSelector } from 'react-redux'
 
 const Bar = () => {
 
-
-    
-
     const districtDataPHD = useSelector(state => state.districtsReducer.phdDistricts)
-
-   
-
     const chartSetting = {
         xAxis: [
           {
@@ -24,7 +18,6 @@ const Bar = () => {
       };
 
 
-     
       let start = 0 
       let pointer = 9 
 
@@ -32,13 +25,14 @@ const Bar = () => {
 
       
       useEffect(()=>{
-
         const districtSlice = []
       for(let i = start ; i <= pointer ; i++ ){
         districtSlice.push(districtDataPHD[i])
       }
       setSlicedData(districtSlice)
       },[])
+
+      console.log(slicedData)
      
       
 
