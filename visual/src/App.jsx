@@ -10,11 +10,17 @@ import { useSelector } from "react-redux";
 import Github from "./github/Github";
 import ContactUsForm from "./components/contact/ContactUsForm";
 import ProgrammeWiseGender from "./components/gender/ProgrammeWiseGender";
+import Bar from "./components/charts/Bar";
+import { addPHDDistricts } from './components/store/slice/districts'
+
+
 
 function App() {
   const dark = useSelector((state) => state.themeReducer.theme);
 
   const [theme, setTheme] = useState("dark");
+
+  const [phdDistricts, setPhdDistricts] = useState([])
 
   useEffect(() => {
     if (!dark) {
@@ -44,6 +50,10 @@ function App() {
           ],
         },
         {
+          path : 'districts',
+          element : <Bar/>
+        },
+        {
           path: "github",
           element: <Github />,
         },
@@ -60,6 +70,21 @@ function App() {
       mode: theme,
     },
   });
+
+
+
+  fetch('/districts_distribution/phd_district_distribution.csv')
+  .then(response => response.text())
+   .then((csvText )=>{
+    Papa.parse(csvText , {
+      header : true,
+      complete : (result)=> {
+        const districtsData = result.data.filter(object => object[''] !== '');
+        setPhdDistricts(districtsData)
+        dispatch(addPHDDistricts(districtsData))
+      }
+    })
+  })
 
   return (
     <ThemeProvider theme={darkTheme}>

@@ -9,6 +9,10 @@ import { useSelector } from "react-redux";
 export default function Pie({ data, allGenderData }) {
   const dark = useSelector((state) => state.themeReducer.theme);
 
+  const districtData = useSelector((state) => state.districtsReducer.phdDistricts)
+
+  console.log(districtData)
+
   const [tempData, setTempData] = useState(data);
   const [dataLable, setDataLabel] = useState(
     "Total Enrollment Gender Distribution"
