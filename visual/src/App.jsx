@@ -1,4 +1,4 @@
-import SimpleCharts from "./components/LinePlot";
+// import SimpleCharts from "./components/LinePlot";
 import CsvReader from "./components/GetData";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import OutLet from "./router/OutLet";
