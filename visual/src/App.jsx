@@ -6,17 +6,26 @@ import Home from "./components/home/Home";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import Github from "./github/Github";
 import ContactUsForm from "./components/contact/ContactUsForm";
 import ProgrammeWiseGender from "./components/gender/ProgrammeWiseGender";
 import Bar from "./components/charts/Bar";
 import { addPHDDistricts } from './components/store/slice/districts'
 
+import Papa from 'papaparse'
+
 
 
 function App() {
+
+  const dispatch = useDispatch()
+
   const dark = useSelector((state) => state.themeReducer.theme);
+
+  const districtData = useSelector(state => state.districtsReducer.phdDistricts)
+
+
 
   const [theme, setTheme] = useState("dark");
 
@@ -73,18 +82,24 @@ function App() {
 
 
 
-  fetch('/districts_distribution/phd_district_distribution.csv')
-  .then(response => response.text())
-   .then((csvText )=>{
-    Papa.parse(csvText , {
+useEffect(()=>{
+
+    //? GETTING DISTRICTS DATA 
+  if(districtData.length !== 0 ){
+    fetch('/districts_distribution/phd_district_distribution.csv')
+    .then(response => response.text())
+    .then((csvText )=>{
+      Papa.parse(csvText , {
       header : true,
       complete : (result)=> {
-        const districtsData = result.data.filter(object => object[''] !== '');
-        setPhdDistricts(districtsData)
-        dispatch(addPHDDistricts(districtsData))
+        const readDistrictData = result.data.filter(object => object[''] !== '');
+        setPhdDistricts(readDistrictData)
+        dispatch(addPHDDistricts(readDistrictData))
       }
     })
   })
+}
+},[])
 
   return (
     <ThemeProvider theme={darkTheme}>
