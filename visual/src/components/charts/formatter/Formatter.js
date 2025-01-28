@@ -86,5 +86,5 @@ export const dataset = [
   ];
   
   export function valueFormatter(value) {
-    return `${value}mm`;
+    return `${value} S`;
   }

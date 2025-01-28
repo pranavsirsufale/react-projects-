@@ -92,7 +92,9 @@ useEffect(()=>{
       Papa.parse(csvText , {
       header : true,
       complete : (result)=> {
-        const readDistrictData = result.data.filter(object => object[''] !== '');
+        const readDistrictData = result.data
+        .filter(object => object[''] !== '')
+        .map((eachObjec)=>({...eachObjec,Count:parseInt(eachObjec.Count)}));
         setPhdDistricts(readDistrictData)
         dispatch(addPHDDistricts(readDistrictData))
       }
