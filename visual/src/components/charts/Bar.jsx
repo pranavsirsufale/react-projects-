@@ -28,13 +28,22 @@ const Bar = () => {
 
   const [slicedData, setSlicedData] = useState(initialSlice);
 
-  const sliceCreator = () => {
-    setSlicing((slicing) => {
-      slicing[0] = slicing[0] + 10;
-      slicing[1] = slicing[1] + 10;
+  const sliceCreator = (forward = false) => {
+    if (forward) {
+      setSlicing((slicing) => {
+        slicing[0] += 10;
+        slicing[1] += 10;
 
-      return slicing;
-    });
+        return slicing;
+      });
+    } else {
+      setSlicing((slicing) => {
+        slicing[0] -= 10;
+        slicing[1] -= 10;
+
+        return slicing;
+      });
+    }
 
     const districtSlice = [];
     for (let i = slicing[0]; i <= slicing[1]; i++) {
@@ -61,7 +70,19 @@ const Bar = () => {
           {...chartSetting}
         />
       </div>
-      <button onClick={sliceCreator}>Slice</button>
+
+      <button
+        onClick={sliceCreator}
+        className="border-2 border-purple-600 rounded-lg px-3 py-2 text-purple-400 cursor-pointer hover:bg-purple-600 hover:text-purple-200"
+      >
+        Previous
+      </button>
+      <button
+        onClick={() => sliceCreator(true)}
+        className="border-2 border-purple-600 rounded-lg px-3 py-2 text-purple-400 cursor-pointer hover:bg-purple-600 hover:text-purple-200"
+      >
+        Next
+      </button>
     </>
   );
 };
