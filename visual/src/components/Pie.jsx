@@ -69,7 +69,13 @@ export default function Pie({ data, allGenderData }) {
             series={[
               {
                 data: genders,
-                highlightScope: { fade: "global", highlight: "item"  },
+                highlightScope: { fade: "global", highlight: "item"  ,},
+
+                // legend: {
+                //   direction: 'row',
+                //   position: { vertical: 'top', horizontal: 'middle' },
+                //   padding: 10,
+                // },
                 
                 faded: {
                   innerRadius: 30,
