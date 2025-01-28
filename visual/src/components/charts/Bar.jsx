@@ -3,230 +3,81 @@ import { BarChart } from '@mui/x-charts/BarChart'
 import { dataset , valueFormatter } from './formatter/Formatter'
 import { useSelector } from 'react-redux'
 
-import Stack from '@mui/material/Stack';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import { axisClasses } from '@mui/x-charts/ChartsAxis';
 
+const Bar = () => {
 
+    const districtDataPHD = useSelector(state => state.districtsReducer.phdDistricts)
+    const chartSetting = {
+        xAxis: [
+          {
+            label: 'PHD Student District Wise Distribution',
+          },
+        ],
+        width: 500,
+        height: 500,
+      };
 
-
-
-
-
-
-
-
-
-
-
-// const Bar = () => {
-
-
-    
-
-    // const districtDataPHD = useSelector(state => state.districtsReducer.phdDistricts)
-
-   
-
-    // const chartSetting = {
-    //     xAxis: [
-    //       {
-    //         label: 'PHD Student District Wise Distribution',
-    //       },
-    //     ],
-    //     width: 500,
-    //     height: 500,
-    //   };
-
-
-    //   let slicing = [0,9]
-    //   let start = 0 
-    //   let pointer = 9 
-
-    //   const [slicedData , setSlicedData ] = useState([])
-
-    //   const sliceCreator = () => {
-    //     const districtSlice = []
-    //   for(let i = start ; i <= pointer ; i++ ){
-    //     districtSlice.push(districtDataPHD[i])
-    //   }
-    //   setSlicedData(districtSlice)
-    //   }
-
-    //   console.log(slicedData)
-     
+      
+      
+      const [slicing , setSlicing ] = useState([0,9])
       
 
+      // console.log(start, pointer)
+      console.log(slicing)
+      
+      const initialSlice = []
 
-//   return (
+      
+      for(let i = slicing[0] ; i <= slicing[1] ; i++ ){
+        initialSlice.push(districtDataPHD[i])
+      }
+      
+      const [slicedData , setSlicedData ] = useState(initialSlice)
 
-//     <>
+      const sliceCreator = () => {
+        
 
-//     <div
-//     className='flex w-full justify-center '
-//     >
+        setSlicing((slicing) => {
+          slicing[0] = slicing[0] + 10 
+          slicing[1] = slicing[1] + 10 
 
- 
-//         <BarChart
-//       dataset={slicedData}
-//       yAxis={[{ scaleType: 'band', dataKey: 'District' }]}
-//       series={[{ dataKey: 'Count', label: 'District Distribution', valueFormatter  }]}
-//       layout="horizontal"
-//       grid={{ vertical: true }}
-//       {...chartSetting}
-//       />
+          return slicing
+        })
 
-// </div>
-//       <button
-//       onClick={sliceCreator}
-//       >
-//         Slice 
-//       </button>
-//       </>
- 
-//   )
-// }
-
+        const districtSlice = []
+      for(let i = slicing[0] ; i <= slicing[1] ; i++ ){
+        districtSlice.push(districtDataPHD[i])
+      }
+      setSlicedData(districtSlice)
+      }
 
 
-function TickParamsSelector({
-  tickPlacement,
-  tickLabelPlacement,
-  setTickPlacement,
-  setTickLabelPlacement,
-}) {
-  return (
-    <Stack direction="column" justifyContent="space-between" sx={{ width: '100%' }}>
-      <FormControl>
-        <FormLabel id="tick-placement-radio-buttons-group-label">
-          tickPlacement
-        </FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby="tick-placement-radio-buttons-group-label"
-          name="tick-placement"
-          value={tickPlacement}
-          onChange={(event) => setTickPlacement(event.target.value)}
-        >
-          <FormControlLabel value="start" control={<Radio />} label="start" />
-          <FormControlLabel value="end" control={<Radio />} label="end" />
-          <FormControlLabel value="middle" control={<Radio />} label="middle" />
-          <FormControlLabel
-            value="extremities"
-            control={<Radio />}
-            label="extremities"
-          />
-        </RadioGroup>
-      </FormControl>
-      <FormControl>
-        <FormLabel id="label-placement-radio-buttons-group-label">
-          tickLabelPlacement
-        </FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby="label-placement-radio-buttons-group-label"
-          name="label-placement"
-          value={tickLabelPlacement}
-          onChange={(event) => setTickLabelPlacement(event.target.value)}
-        >
-          <FormControlLabel value="tick" control={<Radio />} label="tick" />
-          <FormControlLabel value="middle" control={<Radio />} label="middle" />
-        </RadioGroup>
-      </FormControl>
-    </Stack>
-  );
-}
-
-const chartSetting = {
-  yAxis: [
-    {
-      label: 'rainfall (mm)',
-    },
-  ],
-  series: [{ dataKey: 'seoul', label: 'Seoul rainfall', valueFormatter }],
-  height: 300,
-  sx: {
-    [`& .${axisClasses.directionY} .${axisClasses.label}`]: {
-      transform: 'translateX(-10px)',
-    },
-  },
-};
-
-export default function Bar() {
-  const [tickPlacement, setTickPlacement] = React.useState('middle');
-  const [tickLabelPlacement, setTickLabelPlacement] = React.useState('middle');
-
-  const districtDataPHD = useSelector(state => state.districtsReducer.phdDistricts)
-
-  console.log(districtDataPHD)
-
-
-
-  // const chartSetting = {
-  //   xAxis: [
-  //     {
-  //       label: 'PHD Student District Wise Distribution',
-  //     },
-  //   ],
-  //   width: 500,
-  //   height: 500,
-  // };
-
-
-  let slicing = [0,9]
-  let start = 0 
-  let pointer = 9 
-
-  const initialSlice = []
-  for(let i = start ; i <= pointer ; i++ ){
-    initialSlice.push(districtDataPHD[i])
-  }
-
-  const [slicedData , setSlicedData ] = useState(initialSlice)
-
-  
-
-  const sliceCreator = () => {
-    const districtSlice = []
-  for(let i = start ; i <= pointer ; i++ ){
-    districtSlice.push(districtDataPHD[i])
-  }
-  setSlicedData(districtSlice)
-  }
-
-  console.log(slicedData)
-
-
-
+     
+    
 
   return (
-
-
-
-
-
-
-    <div style={{ width: '100%' }}>
-      <TickParamsSelector
-        tickPlacement={tickPlacement}
-        tickLabelPlacement={tickLabelPlacement}
-        setTickPlacement={setTickPlacement}
-        setTickLabelPlacement={setTickLabelPlacement}
+    <>
+    <div
+    className='flex w-full justify-center '
+    >
+        <BarChart
+      dataset={slicedData}
+      yAxis={[{ scaleType: 'band', dataKey: 'District' }]}
+      series={[{ dataKey: 'Count', label: 'District Distribution', valueFormatter  }]}
+      layout="horizontal"
+      grid={{ vertical: true }}
+      {...chartSetting}
       />
-      <BarChart
-        dataset={dataset}
-        xAxis={[
-          { scaleType: 'band', dataKey: 'month', tickPlacement, tickLabelPlacement },
-        ]}
-        {...chartSetting}
-      />
-    </div>
-  );
+
+</div>
+      <button
+      onClick={sliceCreator}
+      >
+        Slice 
+      </button>
+      </>
+ 
+  )
 }
 
-
-// export default Bar
+export default Bar
