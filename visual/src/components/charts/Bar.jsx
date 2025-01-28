@@ -19,62 +19,48 @@ const Bar = () => {
 
   const [slicing, setSlicing] = useState([0, 9]);
 
-
   const initialSlice = [];
   for (let i = slicing[0]; i <= slicing[1]; i++) {
     initialSlice.push(districtDataPHD[i]);
   }
   const [slicedData, setSlicedData] = useState(initialSlice);
 
-  const sliceLimit = districtDataPHD.length
-
-
+  const sliceLimit = districtDataPHD.length;
 
   const sliceCreator = (forward = false) => {
-
-
-
-   
     if (!forward) {
-      
-      
-      
-      
-      if(slicing[1] <= 9 || slicing[0] < 0  ){
-        setSlicing((newSlice)=> {
+      if (slicing[1] <= 9 || slicing[0] < 0) {
+        setSlicing((newSlice) => {
           const slicing = [...newSlice];
-          slicing[0] = ((sliceLimit) - 11)
-          slicing[1] = ((sliceLimit) - 1)
-        })
-        
-        console.log(slicing)
+          slicing[0] = sliceLimit - 11;
+          slicing[1] = sliceLimit - 1;
+        });
+
+        console.log(slicing);
       }
-      
+
       setSlicing((sliceNew) => {
         const slicing = [...sliceNew];
         slicing[0] -= 10;
         slicing[1] -= 10;
-        
+
         return slicing;
       });
-
     } else {
-      
-      if(slicing[1]>= sliceLimit-1){
-        setSlicing((newSlicing)=>{
-          const slicing = [...newSlicing]
+      if (slicing[1] >= sliceLimit - 1) {
+        setSlicing((newSlicing) => {
+          const slicing = [...newSlicing];
           slicing[0] = 0;
           slicing[1] = 9;
-          return slicing
-        })
+          return slicing;
+        });
       }
-      
+
       setSlicing((slicing) => {
         slicing[0] += 10;
         slicing[1] += 10;
         return slicing;
       });
-
     }
 
     const districtSlice = [];
