@@ -28,13 +28,13 @@ const Bar = () => {
   const sliceCreator = (forward = false) => {
     if (!forward) {
       setSlicing((newSlicing) => {
-        const slicing = [...newSlicing]
+        const slicing = [...newSlicing];
         slicing[0] -= 10;
         slicing[1] -= 10;
-        
-      return slicing;
-    });
-  } else {
+
+        return slicing;
+      });
+    } else {
       setSlicing((slicing) => {
         slicing[0] += 10;
         slicing[1] += 10;
@@ -58,7 +58,7 @@ const Bar = () => {
           series={[
             {
               dataKey: "Count",
-              label: "District Distribution",              
+              label: "District Distribution",
             },
           ]}
           layout="horizontal"
@@ -67,24 +67,20 @@ const Bar = () => {
         />
       </div>
 
-      <div
-      className="flex justify-center align-center p-5 gap-10"
-      >
-
-
-      <button
-        onClick={()=>sliceCreator(false)}
-        className="border-2 border-purple-600 rounded-lg px-3 py-2 text-purple-400 cursor-pointer hover:bg-purple-600 hover:text-purple-200"
+      <div className="flex justify-center align-center p-5 gap-10">
+        <button
+          onClick={() => sliceCreator(false)}
+          className="border-2 border-purple-600 rounded-lg px-3 py-2 text-purple-400 cursor-pointer hover:bg-purple-600 hover:text-purple-200"
         >
-        Previous
-      </button>
-      <button
-        onClick={() => sliceCreator(true)}
-        className="border-2 border-purple-600 rounded-lg px-3 py-2 text-purple-400 cursor-pointer hover:bg-purple-600 hover:text-purple-200"
+          Previous
+        </button>
+        <button
+          onClick={() => sliceCreator(true)}
+          className="border-2 border-purple-600 rounded-lg px-3 py-2 text-purple-400 cursor-pointer hover:bg-purple-600 hover:text-purple-200"
         >
-        Next
-      </button>
-        </div>
+          Next
+        </button>
+      </div>
     </>
   );
 };
