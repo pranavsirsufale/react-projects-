@@ -24,6 +24,8 @@ export default function Pie({ data, allGenderData }) {
     "Total Enrollment Gender Distribution"
   );
 
+  const [ishovered , setIsHovered] = useState(false)
+
   const total = tempData.reduce((acc, data) => {
     return (acc += parseFloat(data.Count));
   }, 0);
@@ -58,12 +60,12 @@ export default function Pie({ data, allGenderData }) {
       >
         {/*  First Div  */}
 
-        <div className=" m-16 ">
+        <div className="">
           <div className=" justify-center align-center">
             <h1>{dataLable}</h1>
           </div>
 
-          {/* <PieChart
+          <PieChart
             series={[
               {
                 data: genders,
@@ -79,63 +81,9 @@ export default function Pie({ data, allGenderData }) {
                 
               },
             ]}
-            height={200}
-          /> */}
+            height={isMobile ? 140 : 200}
+          />
 
-
-
-////// ???????????????????????????
-
-<div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px" }}>
-      {/* Legends */}
-      <div>
-        {genders.map((item, index) => (
-          <div
-            key={index}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "10px",
-            }}
-          >
-            <div
-              style={{
-                width: "20px",
-                height: "20px",
-                backgroundColor: item.color,
-                marginRight: "10px",
-                borderRadius: "4px",
-              }}
-            ></div>
-            <span>{item.label}: {valueFormatter(item.value)}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Pie Chart */}
-      <PieChart
-        series={[
-          {
-            data: genders,
-            highlightScope: { fade: "global", highlight: "item" },
-            faded: {
-              innerRadius: 30,
-              additionalRadius: -30,
-              color: "gray",
-            },
-            valueKey: "value", // Field for slice values
-            labelKey: "label", // Field for slice labels
-            valueFormatter,
-          },
-        ]}
-        height={300}
-        width={300}
-      />
-    </div>
-
-
-
-////// ???????????????????????????
 
 
 
@@ -173,16 +121,44 @@ export default function Pie({ data, allGenderData }) {
 
         {/*  Second div  */}
         <div
-          className={`flex justify-center align-center max-w-[50vw] m-10 p-5 `}
+          className={`flex justify-center align-center max-w-full m-10 p-5 `}
+            
+        
         >
-          <ul className="flex flex-col max-h-70 overflow-auto bg-red-300">
+          <ul
+          className="flex flex-col max-h-70 overflow-auto  "
+          
+            
+            >
+
             {allGenderData &&
               allGenderData.map((genderDataObject) => (
                 <li
                   onClick={() => handleShowData(genderDataObject)}
                   key={genderDataObject["PROGRAMME.NAME"]}
-                  className={`px-5 ml-10 p-3 duration-200 cursor-pointer`}
 
+                  // style={{
+                  //   backgroundColor : '#100112',
+        
+                  // }}
+                
+                  className={`px-5 ml-10 bg-[#100112] p-3 duration-200 cursor-pointer
+                     hover:bg-[#A64D79]
+                    `}
+
+                    style={ dark ? {
+                      backgroundColor : '#100112',
+                     
+
+                    } : {
+                      backgroundColor : '#EBD3F8'
+                    }}
+                    
+
+
+                    onMouseEnter={()=> setIsHovered(true)}
+                    onMouseLeave={()=>setIsHovered(false)}
+                
 
                 >
 
