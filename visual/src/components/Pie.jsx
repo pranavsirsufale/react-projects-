@@ -82,31 +82,22 @@ export default function Pie({ data, allGenderData }) {
             height={200}
           /> */}
 
-<div style={{ display: "grid", flexDirection: "column", alignItems: "" }}>
-      {/* Pie Chart */}
-      <PieChart
-        series={[
-          {
-            data: genders,
-            highlightScope: { fade: "global", highlight: "item" },
-            faded: {
-              innerRadius: 30,
-              additionalRadius: -30,
-              color: "gray",
-            },
-            valueKey: "value", // Field for slice values
-            labelKey: "label", // Field for slice labels (not legends)
-            valueFormatter,
-          },
-        ]}
-        height={200}
-        width={200}
-      />
 
+
+////// ???????????????????????????
+
+<div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px" }}>
       {/* Legends */}
-      {/* <div style={{ marginTop: "20px" }}>
+      <div>
         {genders.map((item, index) => (
-          <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "10px",
+            }}
+          >
             <div
               style={{
                 width: "20px",
@@ -119,8 +110,32 @@ export default function Pie({ data, allGenderData }) {
             <span>{item.label}: {valueFormatter(item.value)}</span>
           </div>
         ))}
-      </div> */}
+      </div>
+
+      {/* Pie Chart */}
+      <PieChart
+        series={[
+          {
+            data: genders,
+            highlightScope: { fade: "global", highlight: "item" },
+            faded: {
+              innerRadius: 30,
+              additionalRadius: -30,
+              color: "gray",
+            },
+            valueKey: "value", // Field for slice values
+            labelKey: "label", // Field for slice labels
+            valueFormatter,
+          },
+        ]}
+        height={300}
+        width={300}
+      />
     </div>
+
+
+
+////// ???????????????????????????
 
 
 
