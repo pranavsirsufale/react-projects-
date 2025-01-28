@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
-import { dataset, valueFormatter } from "./formatter/Formatter";
 import { useSelector } from "react-redux";
+// import { dataset, valueFormatter } from "./formatter/Formatter";
 
 const Bar = () => {
   const districtDataPHD = useSelector(

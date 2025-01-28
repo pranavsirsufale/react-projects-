@@ -55,5 +55,5 @@ export const desktopOS = [
   const normalize = (v, v2) => Number.parseFloat(((v * v2) / 100).toFixed(2));
 
   
-  export const valueFormatter = (item) => `${item.value}`;
+  export const valueFormatter = (item) => `${item.value}%`;
   

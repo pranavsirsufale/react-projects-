@@ -47,11 +47,7 @@ export default function Header() {
       >
         <div className=" flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
-            <img
-              src="/logo/logo.jpg"
-              className="mr-3 h-12"
-              alt="Logo"
-            />
+            <img src="/logo/logo.jpg" className="mr-3 h-12" alt="Logo" />
           </Link>
 
           {isMobile ||
@@ -117,12 +113,6 @@ export default function Header() {
                   Graph
                 </NavLink>
               </li>
-
-
-
-             
-
-
               <li>
                 <NavLink
                   to="/districts"
@@ -135,9 +125,6 @@ export default function Header() {
                   Districts
                 </NavLink>
               </li>
-
-
-
               <li>
                 <NavLink
                   to="/contactus"
@@ -150,10 +137,6 @@ export default function Header() {
                   Contact Us
                 </NavLink>
               </li>
-
-
-
-
               <li>
                 <NavLink
                   to="/github"
