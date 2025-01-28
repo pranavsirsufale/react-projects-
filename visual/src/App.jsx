@@ -6,30 +6,25 @@ import Home from "./components/home/Home";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useEffect, useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Github from "./github/Github";
 import ContactUsForm from "./components/contact/ContactUsForm";
 import ProgrammeWiseGender from "./components/gender/ProgrammeWiseGender";
 import Bar from "./components/charts/Bar";
-import { addPHDDistricts } from './components/store/slice/districts'
+import { addPHDDistricts } from "./components/store/slice/districts";
 
-import Papa from 'papaparse'
-
-
+import Papa from "papaparse";
 
 function App() {
-
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
   const dark = useSelector((state) => state.themeReducer.theme);
-
-  const districtData = useSelector(state => state.districtsReducer.phdDistricts)
-
-
+  const districtData = useSelector(
+    (state) => state.districtsReducer.phdDistricts
+  );
 
   const [theme, setTheme] = useState("dark");
 
-  const [phdDistricts, setPhdDistricts] = useState([])
+  const [phdDistricts, setPhdDistricts] = useState([]);
 
   useEffect(() => {
     if (!dark) {
@@ -59,8 +54,8 @@ function App() {
           ],
         },
         {
-          path : 'districts',
-          element : <Bar/>
+          path: "districts",
+          element: <Bar />,
         },
         {
           path: "github",
@@ -80,28 +75,28 @@ function App() {
     },
   });
 
-
-
-useEffect(()=>{
-
-    //? GETTING DISTRICTS DATA 
-  if(districtData.length !== 0 ){
-    fetch('/districts_distribution/phd_district_distribution.csv')
-    .then(response => response.text())
-    .then((csvText )=>{
-      Papa.parse(csvText , {
-      header : true,
-      complete : (result)=> {
-        const readDistrictData = result.data
-        .filter(object => object[''] !== '')
-        .map((eachObjec)=>({...eachObjec,Count:parseInt(eachObjec.Count)}));
-        setPhdDistricts(readDistrictData)
-        dispatch(addPHDDistricts(readDistrictData))
-      }
-    })
-  })
-}
-},[])
+  useEffect(() => {
+    //? GETTING DISTRICTS DATA
+    if (districtData.length !== 0) {
+      fetch("/districts_distribution/phd_district_distribution.csv")
+        .then((response) => response.text())
+        .then((csvText) => {
+          Papa.parse(csvText, {
+            header: true,
+            complete: (result) => {
+              const readDistrictData = result.data
+                .filter((object) => object[""] !== "")
+                .map((eachObjec) => ({
+                  ...eachObjec,
+                  Count: parseInt(eachObjec.Count),
+                }));
+              setPhdDistricts(readDistrictData);
+              dispatch(addPHDDistricts(readDistrictData));
+            },
+          });
+        });
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>

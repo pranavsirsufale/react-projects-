@@ -9,25 +9,15 @@ const CsvReader = () => {
   const genderData = useSelector((state) => state.genderReducer?.gender?.phd);
   const allProgrammeGender = useSelector((state) => state.genderReducer?.phdProgrammeWiseGender)
   
-
-
-  
   const [data, setData] = useState([]);
   const [genderEachProgramme , setGenderEachProgramme] = useState([])
- 
   const dispatch = useDispatch();
 
   
  
   
   useEffect(() => {
-   
-    
-  
     if (!genderData) {
-
-      
-
       fetch("/csv/phd_gender.csv")
         .then((response) => response.text())
         .then((csvText) => {
