@@ -149,10 +149,13 @@ export default function Pie({ data, allGenderData }) {
                     style={ dark ? {
                       backgroundColor : '#100112',
                      
+                     
 
                     } : {
                       backgroundColor : '#EBD3F8'
                     }}
+                    
+
                     
 
 
