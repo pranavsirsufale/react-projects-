@@ -11,7 +11,6 @@ export default function Pie({ data, allGenderData }) {
 
   const districtData = useSelector((state) => state.districtsReducer.phdDistricts)
 
-  console.log(districtData)
 
   const [tempData, setTempData] = useState(data);
   const [dataLable, setDataLabel] = useState(
@@ -28,8 +27,6 @@ export default function Pie({ data, allGenderData }) {
   }));
 
   const handleShowData = (programmeData) => {
-    console.log(programmeData["PROGRAMME.NAME"]);
-
     setDataLabel(programmeData["PROGRAMME.NAME"]);
 
     //! UNDERSTAND THIS LETTER >>>>>>>> IMP
@@ -96,20 +93,11 @@ export default function Pie({ data, allGenderData }) {
       </div>
 
 
-
-
       <div
         className={`flex justify-center align-center max-w-[100vw] m-10 p-5 `}
       >
         <ul
-          // className="flex justify-center align-center px-10 w-full overflow-x-auto"
-
-          className="flex flex-col max-h-20 overflow-auto 
-          
-          "
-          // style={{
-          //   scrollPaddingInline : '2px solid red'
-          // }}
+          className="flex flex-col max-h-20 overflow-auto"
         >
           {allGenderData &&
             allGenderData.map((genderDataObject) => (
@@ -117,8 +105,6 @@ export default function Pie({ data, allGenderData }) {
               onClick={() => handleShowData(genderDataObject)}
                 key={genderDataObject["PROGRAMME.NAME"]}
                 className={`px-5 ml-10 bg-emerald-${!dark ? '200':'950'} p-3 hover:bg-blue-${!dark ?'100' : '500'} duration-200 cursor-pointer`}
-
-              
               >
                 {/* <NavLink to={`programmewisegender/${genderDataObject['PROGRAMME.NAME']}`} > */}
 

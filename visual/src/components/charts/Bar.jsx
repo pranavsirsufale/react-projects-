@@ -18,7 +18,7 @@ const Bar = () => {
   };
 
   const [slicing, setSlicing] = useState([0, 9]);
-  console.log(slicing);
+
 
   const initialSlice = [];
   for (let i = slicing[0]; i <= slicing[1]; i++) {

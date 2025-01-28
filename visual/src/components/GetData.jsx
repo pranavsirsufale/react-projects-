@@ -12,9 +12,6 @@ const CsvReader = () => {
   const [data, setData] = useState([]);
   const [genderEachProgramme , setGenderEachProgramme] = useState([])
   const dispatch = useDispatch();
-
-  
- 
   
   useEffect(() => {
     if (!genderData) {
