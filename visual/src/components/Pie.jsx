@@ -82,7 +82,7 @@ export default function Pie({ data, allGenderData }) {
             height={200}
           /> */}
 
-<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+<div style={{ display: "grid", flexDirection: "column", alignItems: "" }}>
       {/* Pie Chart */}
       <PieChart
         series={[
@@ -104,7 +104,7 @@ export default function Pie({ data, allGenderData }) {
       />
 
       {/* Legends */}
-      <div style={{ marginTop: "20px" }}>
+      {/* <div style={{ marginTop: "20px" }}>
         {genders.map((item, index) => (
           <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
             <div
@@ -119,7 +119,7 @@ export default function Pie({ data, allGenderData }) {
             <span>{item.label}: {valueFormatter(item.value)}</span>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
 
 
