@@ -12,8 +12,9 @@ import ContactUsForm from "./components/contact/ContactUsForm";
 import ProgrammeWiseGender from "./components/gender/ProgrammeWiseGender";
 import Bar from "./components/charts/Bar";
 import { addPHDDistricts } from "./components/store/slice/districts";
-
+import { addPhdProgrammeWiseGenderDistribution , addPHDGenderData } from "./components/store/slice/gender";
 import Papa from "papaparse";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,11 +23,33 @@ function App() {
     (state) => state.districtsReducer.phdDistricts
   );
 
+
+
+  const genderData = useSelector((state) => state.genderReducer?.gender?.phd);
+  const allProgrammeGender = useSelector((state) => state.genderReducer?.phdProgrammeWiseGender)
+  
+  
+  const [data, setData] = useState([]);
+  const [genderEachProgramme , setGenderEachProgramme] = useState([])
+
+
+
+  
+
+
+
+
+
+
+
+
   const [theme, setTheme] = useState("dark");
 
   const [phdDistricts, setPhdDistricts] = useState([]);
 
   useEffect(() => {
+
+
     if (!dark) {
       setTheme("light");
     } else {
@@ -96,9 +119,52 @@ function App() {
           });
         });
     }
+
+
+
+    if (genderEachProgramme.length === 0) {
+      fetch("/csv/phd_gender.csv")
+        .then((response) => response.text())
+        .then((csvText) => {
+          Papa.parse(csvText, {
+            header: true,
+            complete: (result) => {
+              const dat = result.data.filter((obje) => obje[""] !== "");
+              setData({allGender : dat});
+              dispatch(addPHDGenderData({allGender : dat}));
+              fetch('/all_programme_gender/all_programme_gender.csv')
+              .then((response)=> response.text())
+              .then((csvText) => {
+                Papa.parse(csvText , {
+                  header : true,
+                  complete : (result) => {
+                    const dat = result.data.filter((column) => column[''] !== "");
+                    
+                    setGenderEachProgramme((prev)=>{
+                      return dat
+                    })
+                    dispatch(addPhdProgrammeWiseGenderDistribution(dat))
+                    console.log(allProgrammeGender)
+                  }
+                })
+              })
+            },
+            error: (error) => {
+              console.error("Error parsing CSV:", error);
+            },
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching CSV:", error);
+        });
+    } else {
+      setData(genderData);
+      // console.log('gender data is available')
+    }
+
   }, []);
 
-  return (
+  allProgrammeGender && (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline>
         <RouterProvider router={router}>
