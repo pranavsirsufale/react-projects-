@@ -40,7 +40,7 @@ function App() {
       element: <OutLet setTheme={setTheme} />,
       children: [
         {
-          path: "home",
+          path: "",
           element: <Home />,
         },
         {

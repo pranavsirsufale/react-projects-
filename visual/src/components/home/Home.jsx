@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useSelector } from 'react-redux';
 
 const TAX_RATE = 0.07;
 
@@ -40,6 +41,13 @@ const invoiceTaxes = TAX_RATE * invoiceSubtotal;
 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
 export default function Home() {
+
+  const PHDGenderData = useSelector(state => state.genderReducer)
+  console.log(PHDGenderData)
+
+  console.log(rows)
+
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="spanning table">
