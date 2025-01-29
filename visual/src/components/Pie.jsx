@@ -55,7 +55,7 @@ export default function Pie({ data, allGenderData }) {
   return (
     <>
       <div
-      className={`grid grid-cols-${!isMobile ? '2': '1'} w-full justify-center align-center `}
+      className={`grid grid-cols-${isMobile || isTablet ? '1': '2'} w-full justify-center align-center `}
       
       >
         {/*  First Div  */}
