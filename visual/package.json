@@ -18,6 +18,8 @@
     "@reduxjs/toolkit": "^2.5.0",
     "@tailwindcss/vite": "^4.0.0",
     "d3": "^7.9.0",
+    "dotenv": "^16.4.7",
+    "mongoose": "^8.9.5",
     "papaparse": "^5.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
