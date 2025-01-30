@@ -8,26 +8,21 @@ import { Provider, useSelector } from "react-redux";
 import { store } from "./components/store/store";
 import { useState } from "react";
 import App from "./App";
-// import dotenv from 'dotenv'
+import Papa, { parse } from 'papaparse'
 
 
-// dotenv.config({
-//   debug : true,
-//   path : './'
-// })
 
-// import { ThemeProvider, createTheme } from "@mui/material/styles";
-// import CssBaseline from "@mui/material/CssBaseline";
 
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: 'dark'
-//   },
-// });
+
 
 
 createRoot(document.getElementById("root")).render(
+
+  
+
+
   <Provider store={store}>
-    <App />
+   <App />
+
   </Provider>
 );
