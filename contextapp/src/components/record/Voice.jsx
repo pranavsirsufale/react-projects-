@@ -1,18 +1,18 @@
-// import React from 'react'
+import React from 'react'
 
-// const Voice = () => {
-//   return (
-//     <div>
-//         <h1>
+const Voice = () => {
+  return (
+    <div>
+        <h1>
 
-//         Add Voice Note
-//         🎙
-//         </h1>
-//     </div>
-//   )
-// }
+        Add Voice Note
+        🎙
+        </h1>
+    </div>
+  )
+}
 
-// export default Voice
+export default Voice
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -25,17 +25,3 @@ const addAudioElement = (blob) => {
   audio.controls = true;
   document.body.appendChild(audio);
 };
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-
-    <AudioRecorder 
-      onRecordingComplete={addAudioElement}
-      audioTrackConstraints={{
-        noiseSuppression: true,
-        echoCancellation: true,
-      }} 
-      downloadOnSavePress={true}
-      downloadFileExtension="webm"
-    />
-
-);
