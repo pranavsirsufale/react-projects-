@@ -1,5 +1,5 @@
 import React from "react";
-import { AudioRecorder } from "react-audio-voice-recorder";
+import { AudioRecorder , useAudioRecorder } from "react-audio-voice-recorder";
 
 const Voice = () => {
   const addAudioElement = (blob) => {
@@ -10,9 +10,33 @@ const Voice = () => {
     document.body.appendChild(audio);
   };
 
+  const {
+    startRecording,
+    stopRecording,
+    togglePauseResume,
+    recordingBlob,
+    isRecording,
+    isPaused,
+    recordingTime,
+    mediaRecorder
+  } = useAudioRecorder();
+
+//   useEffect(() => {
+//     if (!recordingBlob) return;
+
+//     // recordingBlob will be present at this point after 'stopRecording' has been called
+//   }, [recordingBlob])
+
   return (
     <div>
-      <h1>Add Voice Note 🎙</h1>
+      <h1>
+        {
+            isRecording ? " Your voice is being recorded"  : "Add Voice Note 🎙"
+        }
+        
+
+
+      </h1>
 
       <AudioRecorder
         onRecordingComplete={addAudioElement}
