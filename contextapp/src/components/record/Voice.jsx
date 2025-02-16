@@ -4,24 +4,24 @@ import VoiceRecorder from "./VoiceRecorder";
 
 
 const Voice = () => {
-  const addAudioElement = (blob) => {
-    const url = URL.createObjectURL(blob);
-    const audio = document.createElement("audio");
-    audio.src = url;
-    audio.controls = true;
-    document.body.appendChild(audio);
-  };
+//   const addAudioElement = (blob) => {
+//     const url = URL.createObjectURL(blob);
+//     const audio = document.createElement("audio");
+//     audio.src = url;
+//     audio.controls = true;
+//     document.body.appendChild(audio);
+//   };
 
-  const {
-    startRecording,
-    stopRecording,
-    togglePauseResume,
-    recordingBlob,
-    isRecording,
-    isPaused,
-    recordingTime,
-    mediaRecorder
-  } = useAudioRecorder();
+//   const {
+//     startRecording,
+//     stopRecording,
+//     togglePauseResume,
+//     recordingBlob,
+//     isRecording,
+//     isPaused,
+//     recordingTime,
+//     mediaRecorder
+//   } = useAudioRecorder();
 
 //   useEffect(() => {
 //     if (!recordingBlob) return;

@@ -3,13 +3,25 @@ import { FaMicrophone, FaStop, FaPlay, FaDownload } from "react-icons/fa";
 
 const VoiceRecorder = () => {
   const [recording, setRecording] = useState(false);
+const [videoRecording, setVideoRecording] = useState(false)
+
   const [audioURL, setAudioURL] = useState(null);
+  
+  const [videoURL,setVideoURL] = useState(null)
+
   const mediaRecorderRef = useRef(null);
+
+  const videoRecorderRef = useRef(null)
+
   const audioChunksRef = useRef([]);
+  const videoChunksRef = useRef([])
 
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const videoStream = await navigator.mediaDevices.getUserMedia({video : true})
+
+        videoRecorderRef.current = new MediaRecorder(videoStream)
       mediaRecorderRef.current = new MediaRecorder(stream);
 
       mediaRecorderRef.current.ondataavailable = (event) => {
@@ -17,6 +29,21 @@ const VoiceRecorder = () => {
           audioChunksRef.current.push(event.data);
         }
       };
+
+      videoRecorderRef.current.ondataavailable = ( event ) => {
+        if ( event.data.size > 0 ){
+            videoChunksRef.current.push(event.data)
+        }
+      }
+
+      videoRecorderRef.current.onstop = () => {
+        const videoBlob = new Blob(videoChunksRef.current , { type : 'audio/webm'});
+        const url = URL.createObjectURL(videoBlob);
+        setVideoURL(url)
+        videoChunksRef.current = []
+        
+      }
+
 
       mediaRecorderRef.current.onstop = () => {
         const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" });
