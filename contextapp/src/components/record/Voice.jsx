@@ -1,5 +1,7 @@
 import React from "react";
 import { AudioRecorder , useAudioRecorder } from "react-audio-voice-recorder";
+import VoiceRecorder from "./VoiceRecorder";
+
 
 const Voice = () => {
   const addAudioElement = (blob) => {
@@ -29,10 +31,12 @@ const Voice = () => {
 
   return (
     <div>
-      <h1>
-        {
-            isRecording ? " Your voice is being recorded"  : "Add Voice Note 🎙"
-        }
+
+        <VoiceRecorder/>
+
+
+      {/* <h1>
+   Add Voice Note 🎙
         
 
 
@@ -49,7 +53,7 @@ const Voice = () => {
         downloadFileExtension="mp3"
         showVisualizer={true}
         
-      />
+      /> */}
     </div>
   );
 };
