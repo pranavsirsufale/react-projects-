@@ -12,6 +12,7 @@
   "dependencies": {
     "contextapp": "file:",
     "react": "^18.3.1",
+    "react-audio-voice-recorder": "^2.2.0",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
